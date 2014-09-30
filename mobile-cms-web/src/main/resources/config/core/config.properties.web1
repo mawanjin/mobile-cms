@@ -1,0 +1,61 @@
+## hsql
+#jdbc.url=jdbc:hsqldb:./hsqldb/dbname
+#jdbc.url=jdbc:hsqldb:hsql://localhost/dbname
+#jdbc.username=root
+#jdbc.password=root
+
+## DB2
+#jdbc.driverClassName=com.ibm.db2.jcc.DB2Driver
+#jdbc.driverClassName=COM.ibm.db2.jdbc.app.DB2Driver
+#jdbc.url=jdbc:db2://localhost:50000/dbname
+#jdbc.username=root
+#jdbc.password=root
+
+## PostgreSQL
+#jdbc.driverClassName=org.postgresql.Driver
+#jdbc.url=jdbc:postgresql:template1
+#jdbc.username=root
+#jdbc.password=root
+
+# MS SQL Server
+#jdbc.vc.driver_class=
+#jdbc.vc.url=
+#jdbc.vc.username=
+#jdbc.vc.password=
+
+## Oracle
+#jdbc.connection.driver_class=oracle.jdbc.driver.OracleDriver
+#jdbc.connection.url=jdbc:oracle:thin:@180.153.154.50:1521:ORCL
+#jdbc.connection.username=wifi
+#jdbc.connection.password=wifi123
+
+## MySQL
+jdbc.connection.driver_class=com.mysql.jdbc.Driver
+jdbc.connection.url=jdbc\:mysql\://172.16.133.203\:3309/weixin_cms?useUnicode\=true&characterEncoding\=UTF-8
+jdbc.connection.username=weixin_cms
+jdbc.connection.password=QdRxJost@#23
+hibernate.naming_strategy=org.hibernate.cfg.ImprovedNamingStrategy
+
+config.weixin.appId=wxdb18a12778fcc9f8
+config.weixin.appSecret=b37a1ed4ae32a0bb6e973d88b10adcc3
+config.weixin.callbackToken=ce187ed67e05c2d8879bf66bbfdfc8b9
+
+config.weixin.apiUrl=https://api.weixin.qq.com
+config.weixin.access_token.url=https://api.weixin.qq.com/sns/oauth2/access_token
+config.weixin.openId.url=https://open.weixin.qq.com/connect/oauth2/authorize
+config.weixin.custom=https://api.weixin.qq.com/cgi-bin/message/custom/send
+config.weixin.userinfo=https://api.weixin.qq.com/cgi-bin/user/info
+config.weixin.group.url=https://api.weixin.qq.com/cgi-bin/groups
+config.weixin.media.upload.url=http://file.api.weixin.qq.com/cgi-bin/media/upload
+config.weixin.news.upload.url=https://api.weixin.qq.com/cgi-bin/media/uploadnews
+config.weixin.mass.url=https://api.weixin.qq.com/cgi-bin/message/mass/sendall
+
+config.vfs.root=/work/apache-tomcat-7.0.55/webapps/cms/upload
+config.cms.article=http://61.152.75.176/cms/front/cms/show.do?id=@{article}
+config.cms.pic=http://61.152.75.176/cms/upload/@{pic}
+
+config.online.sso.appid=96651ac3
+config.online.sso.serial_num=2003
+config.traffic_api.order=http://localhost:8080/api/sp/order.do
+config.traffic_api.task_id=1
+config.traffic_api.access_key=1

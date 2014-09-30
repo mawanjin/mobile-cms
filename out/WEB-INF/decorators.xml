@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/layouts/">
+    <excludes>
+        <pattern>/admin/cms/content/preview.do*</pattern>
+    </excludes>
+    <excludes>
+        <pattern>/front/weixin/api.do*</pattern>
+    </excludes>
+    <decorator name="admin" page="admin.jsp">
+        <pattern>/admin/*</pattern>
+    </decorator>
+    <decorator name="security" page="admin.jsp">
+        <pattern>/component/security/*</pattern>
+    </decorator>
+    <decorator name="basic" page="admin.jsp">
+        <pattern>/component/basic/*</pattern>
+    </decorator>
+    <decorator name="front" page="front.jsp">
+        <pattern>/front/*</pattern>
+    </decorator>
+</decorators>

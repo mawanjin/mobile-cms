@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-lazy-init="true">
+
+    <description>Spring公共配置文件</description>
+    <!--<import resource="classpath:config/spring/client/client-rpc-context.xml"/>-->
+    <!-- 属性文件读入 -->
+    <context:property-placeholder location="classpath:config/core/config.properties"/>
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.joinsoft.mobile.cms.service"/>
+    <context:component-scan base-package="com.joinsoft.mobile.cms.component"/>
+
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="velocityProperties">
+            <props>
+                <prop key="resource.loader">string</prop>
+                <prop key="string.resource.loader.class">
+                    com.joinsoft.mobile.cms.component.template.StringResourceLoader
+                </prop>
+            </props>
+        </property>
+    </bean>
+</beans>

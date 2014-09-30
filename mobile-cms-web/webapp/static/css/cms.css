@@ -1,0 +1,46 @@
+.cms_content {
+    line-height: 1.5em;
+    clear: both;
+    font-size: 80%;
+    margin: 1em 0.25em 2em 0.25em;
+}
+
+.cms_active_content {
+    background: #ffffe0;
+}
+
+.cms_content a:link {
+    color: #205c90;
+    border-bottom: 0.1em solid #ccc;
+}
+
+.cms_content a:visited {
+    color: #427597;
+    border-bottom: 0.1em solid #ccc;
+}
+
+.cms_content a:hover {
+    color: #75ad0a !important;
+}
+
+.cms_content .discreet {
+    color: #666;
+    font-size: 85%;
+    font-weight: normal;
+}
+
+.global-icon-16 {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(images/sprite_list_icon.gif);
+    background-position: -421px -83px;
+}
+
+.global-icon-16-pdf {
+    background-position: -69px -83px;
+}
+
+.global-icon-16-dir {
+    background-position: -5px -3px;
+}

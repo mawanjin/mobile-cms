@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="securityService" class="com.joinsoft.mobile.cms.service.mobile.MobileSecurityService"/>
+
+    <bean id="shiroDbRealm" class="com.joinsoft.mobile.cms.MobileShiroDbRealm"/>
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="shiroDbRealm"/>
+    </bean>
+
+    <bean id="roleOrFilter" class="com.joinsoft.framework.security.RolesOrAuthorizationFilter"/>
+
+    <bean id="logout" class="org.apache.shiro.web.filter.authc.LogoutFilter">
+        <property name="redirectUrl" value="/jsp/login.jsp"/>
+    </bean>
+
+    <bean id="shiroSecurityFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/jsp/login.jsp"/>
+        <property name="successUrl" value="/jsp/login_success.jsp"/>
+        <property name="unauthorizedUrl" value="/jsp/unauthorized.jsp"/>
+        <property name="filters">
+            <map>
+                <entry key="rolesor" value-ref="roleOrFilter"/>
+                <entry key="logout" value-ref="logout"/>
+            </map>
+        </property>
+        <property name="filterChainDefinitions">
+            <value>
+                /jsp/login.jsp = authc
+                /logout = logout
+                /admin/** = rolesor[admin]
+                /component/security/** = rolesor[admin]
+                /component/basic/** = rolesor[admin]
+            </value>
+        </property>
+    </bean>
+
+    <context:annotation-config/>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <context:component-scan base-package="com.joinsoft.framework.security.service"/>
+    <jpa:repositories base-package="com.joinsoft.framework.security.repository"
+                      factory-class="com.joinsoft.framework.orm.jpa.FrameworkJpaRepositoryFactoryBean"/>
+</beans>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <description>数据访问配置</description>
+
+    <!-- 数据源定义,使用Apache DBCP 连接池-->
+         <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+             <property name="driverClassName" value="${jdbc.connection.driver_class}" />
+             <property name="url" value="${jdbc.connection.url}" />
+             <property name="username" value="${jdbc.connection.username}" />
+             <property name="password" value="${jdbc.connection.password}" />
+         </bean>
+
+    <!-- 数据源定义,使用 c3p0 连接池
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.connection.driver_class}"/>
+        <property name="jdbcUrl" value="${jdbc.connection.url}"/>
+        <property name="user" value="${jdbc.connection.username}"/>
+        <property name="password" value="${jdbc.connection.password}"/>
+        <property name="maxPoolSize" value="3"></property>
+        <property name="minPoolSize" value="1"></property>
+        <property name="initialPoolSize" value="2"></property>
+        <property name="maxIdleTime" value="20"></property>
+        <property name="testConnectionOnCheckin" value="true"/>
+        <property name="idleConnectionTestPeriod" value="60"/>
+    </bean> -->
+
+    <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="databasePlatform">
+            <bean factory-method="getDialect" class="com.joinsoft.framework.orm.AutoDialect">
+                <constructor-arg ref="dataSource"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
+        <property name="packagesToScan" value="com.joinsoft.mobile.cms.entity,
+                                            com.joinsoft.framework.security.entity,
+                                            com.joinsoft.framework.basic.entity"/>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.ejb.naming_strategy">${hibernate.naming_strategy}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <jpa:repositories base-package="com.joinsoft.mobile.cms.repository"
+                      factory-class="com.joinsoft.framework.orm.jpa.FrameworkJpaRepositoryFactoryBean" />
+</beans>
