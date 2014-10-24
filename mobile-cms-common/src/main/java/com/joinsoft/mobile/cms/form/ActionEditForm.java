@@ -91,6 +91,7 @@ public class ActionEditForm {
         this.valueType = entity.getValueType();
         this.key = entity.getActionName();
         this.isValid = entity.getIsValid();
+
     }
 
     public void toEntity(TbAction action) {

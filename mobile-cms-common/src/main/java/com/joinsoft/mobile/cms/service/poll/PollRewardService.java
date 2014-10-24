@@ -43,7 +43,7 @@ public class PollRewardService {
     public Page<UserRewardDto> searchUserRewardPage(Map<String, Object> searchParams, Pageable pageable) {
         Map<String, Class> classMap = Maps.newHashMap();
         classMap.put("reward", Boolean.class);
-        Map<String, SearchFilter> filters = SearchFilter.parse(searchParams, classMap);
+        Map<String, SearchFilter> filters = SearchFilter.parse(searchParams);
         Specification<TbPollRecord> spec = DynamicSpecifications.bySearchFilter(filters.values());
         Page<TbPollRecord> pollRecordPage = pollRecordRepository.findAll(spec, pageable);
         List<Long> userIds = Lists.newArrayList();
