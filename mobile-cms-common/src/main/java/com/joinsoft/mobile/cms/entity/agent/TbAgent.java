@@ -30,7 +30,26 @@ public class TbAgent extends AutoModel {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "section_id")
     private TbSectionAgent section;
+    @Transient
+    private Long sectionId;
 
+    public Long getSectionId() {
+
+        if(section==null) {
+            if(sectionId==null)
+                return  null;
+            else
+                return  sectionId;
+        }
+        else{
+            return section.getId();
+        }
+
+    }
+
+    public void setSectionId(Long sectionId) {
+        this.sectionId = sectionId;
+    }
 
     public String getFax() {
         return fax;

@@ -36,8 +36,8 @@
             <div class="form-group">
                 <form:label path="section" class="col-sm-3 control-label no-padding-right">片区:</form:label>
                 <div class="col-sm-9">
-                    <form:select path="section">
-                        <form:options items="${options}" itemLabel="title" itemValue="val"/>
+                    <form:select path="sectionId">
+                        <form:options items="${options}" itemLabel="sectionName" itemValue="id"/>
                     </form:select>
                 </div>
             </div>

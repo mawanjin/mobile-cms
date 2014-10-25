@@ -2,8 +2,8 @@ package com.joinsoft.mobile.cms.service;
 
 import com.joinsoft.framework.orm.DynamicSpecifications;
 import com.joinsoft.framework.orm.SearchFilter;
-import com.joinsoft.mobile.cms.entity.agent.TbAgent;
-import com.joinsoft.mobile.cms.repository.agent.AgentRepository;
+import com.joinsoft.mobile.cms.entity.agent.TbSectionAgent;
+
 import com.joinsoft.mobile.cms.repository.agent.AgentSectionRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,36 +31,36 @@ public class AgentSectionService {
 
 
 
-    public Page<TbAgent> searchAgent(Map<String, Object> searchParams, Pageable pageable) {
+    public Page<TbSectionAgent> searchSectionAgent(Map<String, Object> searchParams, Pageable pageable) {
         Map<String, SearchFilter> filters = SearchFilter.parse(searchParams);
-        Specification<TbAgent> spec = DynamicSpecifications.bySearchFilter(filters.values());
-        Page<TbAgent> page = agentRepository.findAll(spec, pageable);
+        Specification<TbSectionAgent> spec = DynamicSpecifications.bySearchFilter(filters.values());
+        Page<TbSectionAgent> page = agentSectionRepository.findAll(spec, pageable);
         return page;
     }
 
-    public TbAgent getById(Long id) {
-        return agentRepository.findOne(id);
+    public TbSectionAgent getById(Long id) {
+        return agentSectionRepository.findOne(id);
     }
 
-    public void saveAgent(TbAgent form) {
+    public void saveAgent(TbSectionAgent form) {
         /*
-        TbAgent action = new TbAgent();
+        TbSectionAgent action = new TbSectionAgent();
         if (form.getId() != null) {
-            action = agentRepository.findOne(form.getId());
+            action = agentSectionRepository.findOne(form.getId());
         }
 
         form.toEntity(action);
         */
 
-        agentRepository.save(form);
+        agentSectionRepository.save(form);
     }
 
-    public void deleteAgent(Long... ids) {
-        agentRepository.deleteInId(Arrays.asList(ids));
+    public void deleteSectionAgent(Long... ids) {
+        agentSectionRepository.deleteInId(Arrays.asList(ids));
     }
 
-    public List<TbAgent> getAllAgents() {
-        return (List<TbAgent>) agentRepository.findAll();
+    public List<TbSectionAgent> getAllAgents() {
+        return (List<TbSectionAgent>) agentSectionRepository.findAll();
     }
 
 

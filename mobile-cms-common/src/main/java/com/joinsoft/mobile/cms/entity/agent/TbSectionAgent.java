@@ -4,6 +4,7 @@ package com.joinsoft.mobile.cms.entity.agent;
 import com.joinsoft.framework.entity.AutoModel;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Date;
@@ -20,7 +21,7 @@ public class TbSectionAgent extends AutoModel {
     private Date  operTime;
     private String oper;
     private Integer state;
-    @OneToMany(mappedBy = "section")
+    @OneToMany(mappedBy = "section",fetch = FetchType.LAZY)
     private Set<TbAgent> agents;
 
 
