@@ -25,8 +25,8 @@ public class CmsHandlerExceptionResolver extends UIHandlerExceptionResolver {
                                          Object o, Exception ex) {
         if (o instanceof HandlerMethod) {
             Object bean = ((HandlerMethod) o).getBean();
-            if (FrontController.class.isAssignableFrom(bean.getClass()) ||
-                    AccessTokenController.class.isAssignableFrom(bean.getClass())) {
+        //    if (FrontController.class.isAssignableFrom(bean.getClass()) ||
+        //            AccessTokenController.class.isAssignableFrom(bean.getClass())) {
                 logger.warn("前端页面错误");
                 Map<String, Object> model = new HashMap<String, Object>();
                 String nextUrl = (String) request.getAttribute("nextUrl");
@@ -44,10 +44,9 @@ public class CmsHandlerExceptionResolver extends UIHandlerExceptionResolver {
                 model.put("errorMessage", StringUtils.isEmpty(ex.getMessage()) ? ex.toString() : ex.getMessage());
                 logger.error(ex.toString(), ex);
                 return new ModelAndView("forward:/jsp/500.jsp", model);
-            }
-            if (AdminController.class.isAssignableFrom(bean.getClass())) {
-                logger.warn("后端页面错误");
-            }
+          //  }
+         //   if (AdminController.class.isAssignableFrom(bean.getClass())) {
+           // }
         }
         return super.resolveException(request, response, o, ex);
     }

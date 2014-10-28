@@ -5,9 +5,11 @@
     <title></title>
 </head>
 <body>
+<!--
 <div class="login_top">
     <img src="${ctxRoot}/static/front/images/loginTop.jpg"/>
 </div>
+-->
 <table class="login_box">
     <tr class="ln1">
         <td>${errorMessage}</td>

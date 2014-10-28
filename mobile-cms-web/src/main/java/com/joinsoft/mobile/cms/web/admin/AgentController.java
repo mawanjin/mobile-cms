@@ -14,6 +14,7 @@ import com.joinsoft.mobile.cms.service.ActionService;
 import com.joinsoft.mobile.cms.service.AgentSectionService;
 import com.joinsoft.mobile.cms.service.AgentService;
 import com.joinsoft.mobile.cms.service.ConfigService;
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -143,7 +144,17 @@ public class AgentController extends AdminController {
             saveError(model, "片区不存在");
             return redirect("/agent/indexSection.do");
         }
-        agentSectionService.deleteSectionAgent(id);
+        try{
+            agentSectionService.deleteSectionAgent(id);
+        }catch(Exception e){
+            if(e instanceof org.springframework.dao.DataIntegrityViolationException){
+                saveError(model, "被删除的片区下面有网点,请先删除网点");
+                return redirect("/agent/indexSection.do");
+            }else{
+                saveError(model, "发生系统异常");
+                return redirect("/agent/indexSection.do");
+            }
+        }
         return redirect("/agent/indexSection.do");
     }
 
@@ -155,7 +166,19 @@ public class AgentController extends AdminController {
             saveError(model, "请选择删除的片区集合");
             return redirect("/agent/indexSection.do");
         }
-        agentSectionService.deleteSectionAgent(ids);
+        try{
+                agentSectionService.deleteSectionAgent(ids);
+        }catch(Exception e){
+           // e.printStackTrace();
+            if(e instanceof org.springframework.dao.DataIntegrityViolationException){
+
+                saveError(model, "被删除的片区下面有网点,请先删除网点");
+                return redirect("/agent/indexSection.do");
+            }else{
+                saveError(model, "发生系统异常");
+                return redirect("/agent/indexSection.do");
+            }
+        }
         return redirect("/agent/indexSection.do");
     }
 
