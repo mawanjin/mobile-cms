@@ -6,6 +6,8 @@
     <excludes>
         <pattern>/front/weixin/api.do*</pattern>
     </excludes>
+
+
     <decorator name="admin" page="admin.jsp">
         <pattern>/admin/*</pattern>
     </decorator>

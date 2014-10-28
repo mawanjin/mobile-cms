@@ -19,7 +19,7 @@ public class TbAction extends AutoModel {
     private ValueType valueType;
     private Integer minValue;
     private Integer maxValue;
-    @Enumerated
+
     private ActionCycle cycle;
     private Integer count;
     private Boolean isValid;

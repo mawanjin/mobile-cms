@@ -68,7 +68,7 @@ public class PollService {
     public Page<PollEditForm> search(Map<String, Object> searchParams, Pageable pageable) {
         Map<String, Class> classMap = Maps.newHashMap();
         classMap.put("type", PollType.class);
-        Map<String, SearchFilter> filters = SearchFilter.parse(searchParams, classMap);
+        Map<String, SearchFilter> filters = SearchFilter.parse(searchParams);
         Specification<TbPoll> spec = DynamicSpecifications.bySearchFilter(filters.values());
         Page<TbPoll> page = pollRepository.findAll(spec, pageable);
         List<PollEditForm> formList = Lists.newArrayList();
