@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: weixin_cms
 Target Host: localhost
 Target Database: weixin_cms
-Date: 2014/10/24 10:20:43
+Date: 2014/10/28 12:57:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -56,7 +56,7 @@ CREATE TABLE `sec_menu_item` (
   KEY `fk_menu_item_role` (`role_id`),
   CONSTRAINT `fk_menu_item_parent` FOREIGN KEY (`parent_id`) REFERENCES `sec_menu_item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_menu_item_role` FOREIGN KEY (`role_id`) REFERENCES `sec_role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for sec_role
@@ -171,8 +171,10 @@ CREATE TABLE `tb_agent` (
   `oper` varchar(255) DEFAULT NULL,
   `oper_time` datetime DEFAULT NULL,
   `section_id` int(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `fk_agent_secid` (`section_id`),
+  CONSTRAINT `fk_agent_secid` FOREIGN KEY (`section_id`) REFERENCES `tb_section_agent` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tb_article
@@ -451,7 +453,7 @@ CREATE TABLE `tb_section_agent` (
   `oper` varchar(255) DEFAULT NULL,
   `state` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tb_text
@@ -545,6 +547,7 @@ INSERT INTO `sec_menu_item` VALUES ('26', '自动回复', '/admin/auto_reply/ind
 INSERT INTO `sec_menu_item` VALUES ('27', 'WIFI串码管理', '/admin/mall/wifi/index.do', null, '18', '1', null);
 INSERT INTO `sec_menu_item` VALUES ('28', '网点管理', '', 'icon-tag', null, '1', null);
 INSERT INTO `sec_menu_item` VALUES ('29', '网点维护', '/admin/agent/index.do', null, '28', '2', null);
+INSERT INTO `sec_menu_item` VALUES ('30', '片区管理', '/admin/agent/indexSection.do', null, '28', '1', null);
 INSERT INTO `sec_role` VALUES ('1', 'admin', null, '超级管理员组', '1');
 INSERT INTO `sec_role` VALUES ('2', 'user', null, '普通用户', '1');
 INSERT INTO `sec_user` VALUES ('1', 'admin', '0192023a7bbd73250516f069df18b500', '超级管理员', null);
@@ -755,10 +758,8 @@ INSERT INTO `tb_ad` VALUES ('8', '第三方', '/ad/cd09e51780a24b58b8a4c02da4aa7
 INSERT INTO `tb_ad` VALUES ('9', '1', '/ad/35ed0a040e0c452291ffeacba4060aef.sql', '1', '2014-10-05 22:37:03', '1');
 INSERT INTO `tb_ad_stats` VALUES ('2', '3', '8', '8');
 INSERT INTO `tb_ad_stats` VALUES ('3', '2', '7', '10');
-INSERT INTO `tb_agent` VALUES ('4', '2', '北京', '2', '2', null, null, null, null, null, null);
-INSERT INTO `tb_agent` VALUES ('5', '3', '上海', '3', '3', null, null, null, null, null, null);
-INSERT INTO `tb_agent` VALUES ('6', 'we', '浙江省', 'weew', 'weew', null, null, null, null, null, null);
-INSERT INTO `tb_agent` VALUES ('7', 'w', '北京', 'ok', 'ok', null, null, null, null, null, null);
+INSERT INTO `tb_agent` VALUES ('8', '1', '1', '1', '1', '1', null, null, null, null, '4');
+INSERT INTO `tb_agent` VALUES ('9', '2', '2', '2', '2', '2', null, null, null, null, '3');
 INSERT INTO `tb_article` VALUES ('10', '64', '', 'http://218.1.64.75/cms/front/at/my/sign.do');
 INSERT INTO `tb_article` VALUES ('11', '70', '<p><span style=\"font-size:2EM\"><strong>您在&ldquo;简单生活节&rdquo;当日，【成功注册】签个到，并参加【每日签到】及【活动签到】，即可现场领取精美读卡器一个。</strong><br />\r\n【注册】<br />\r\n电信用户：可获得100M 3G流量。<br />\r\n非电信用户：可获得100个积点。<br />\r\n累计500积点可兑换3小时wifi时长。<br />\r\n【每日签到】<br />\r\n电信用户：可随机获取5-15M 3G流量。<br />\r\n非电信用户：可随机获得5-15积点。<br />\r\n两者不可兼得。<br />\r\n累计500积点可兑换3小时wifi时长。<br />\r\n【活动签到】<br />\r\n完成活动签到后即可获得200个积点<br />\r\n累计500积点可兑换3小时wifi时长。<br />\r\n<a href=\"http://218.1.64.75/cms/upload/ckeditor/images/HereMap.jpg\" target=\"_blank\"><img alt=\"\" src=\"http://218.1.64.75/cms/upload/ckeditor/images/HereMap.jpg\" style=\"float:left; height:115px; width:285px\" /></a></span></p>\r\n', '');
 INSERT INTO `tb_article` VALUES ('12', '1', '<p>&nbsp;</p>\r\n\r\n<p><br />\r\n<strong>1.基本使用规则<br />\r\nQ1：我不是电信用户，能否使用&ldquo;签个到&rdquo;？</strong><br />\r\nA：能。本产品面向所有移动互联网用户。电信用户可获得3G流量；<br />\r\n不是电信用户，可以通过领取积点获取由中国电信提供的ChinaNet免费WiFi时长。<br />\r\n<br />\r\n<strong>Q2：使用&ldquo;签个到&rdquo;需要收费吗？</strong><br />\r\nA：无需费用。用户使用微信服务号均不收费。<br />\r\n<br />\r\n<strong>Q3：&ldquo;签个到&rdquo;产品是怎么玩儿的？</strong><br />\r\nA：用户通过&ldquo;首次注册&rdquo;、&ldquo;邀请好友&rdquo;、&ldquo;每日签到&rdquo;、&ldquo;参加活动&rdquo;的方式，电信用户即可领取3G流量和积点，积点可兑换礼品。非电信用户则可获得积点，积点可兑换礼品（WiFi时长）。<br />\r\n<br />\r\n<strong>2.产品使用问题</strong><br />\r\n------注册登陆------<br />\r\n<strong>Q1：初次使用&ldquo;签个到&rdquo;如何注册账号？</strong><br />\r\nA：请按照以下步骤注册：<br />\r\n1.电信用户/非电信用户输入手机号码、密码、重复填写密码、邀请人号码；<br />\r\n2.点击&ldquo;发送验证码&rdquo;，手机获取验证码短信以后填入；<br />\r\n以上信息填写正确，点击确认并登陆，提示注册成功。<br />\r\n<br />\r\n<strong>Q2：当完成注册或已注册，该如何登陆?</strong><br />\r\nA：账号处填入手机号，密码处填入已设置的密码；<br />\r\n以上信息填写正确，点击登录即可。<br />\r\n<br />\r\n<strong>Q3：忘记密码，如何找回密码或重制密码？</strong><br />\r\nA：请使用手机号进行登陆，如忘记密码按照以下步骤重制：<br />\r\n1.电信用户/非电信用户输入手机号码；<br />\r\n2.点击&ldquo;发送验证码&rdquo;，手机获取验证码短信以后填入；<br />\r\n3.输入新密码后，点击确定并登陆<br />\r\n修改后的密码保存并默认其登录状态。<br />\r\n<br />\r\n------流量问题------<br />\r\n<strong>Q1：我是电信用户，该如何领取流量？</strong><br />\r\nA：电信用户通过首次注册、邀请好友、每日签到，参加活动等，获取相应额度的电信3G流量。<br />\r\n<br />\r\n<strong>Q2：我是非电信用户，该如何领取流量？</strong><br />\r\nA：平台针对电信用户发放的是3G流量，非电信用户不能直接领取3G流量，需要通过积点来兑换免费WiFi时长。<br />\r\n<br />\r\n<strong>Q3：送的是3G还是4G流量?</strong><br />\r\nA：3G还是4G视您使用的手机套餐业务而定，与您本身的套餐流量额度无关。<br />\r\n<br />\r\n<strong>Q4：&ldquo;签个到&rdquo;需做些什么可领到流量？</strong><br />\r\nA：如果您是活跃用户，每天登录使用并且积极参加活动，可获得不少的流量。具体机制：<br />\r\n3G流量获取规则（电信用户）<br />\r\n每日签到 - 每日可随机获得5-15M的流量，连续签到可获得更多.<br />\r\n首次注册 - 用户注册成功即可获得60M/次.<br />\r\n邀请注册 - 成功邀请好友注册为新用户可得流量奖励10M，限邀请5人/月。被邀请好友（电信用户）获10M流量/次；（非电信用户）获10个积点/次。<br />\r\n参加活动 - 用户通过平台举办的各类活动来获取一定量的流量<br />\r\n<br />\r\n<strong>Q5：如何知晓自己领取了多少流量？</strong><br />\r\nA：您可在登陆后，通过【我的】-【流量历史】板块，您可以查询到自己的流量领取记录。<br />\r\n<br />\r\n<strong>Q6：领到的流量能立即生效的吗？</strong><br />\r\nA：不是。用户提交生效申请，3天后生效，可在流量历史中的月历史中查看是否生效。<br />\r\n<br />\r\n<strong>Q7：当月兑换的3G流量有效期限？</strong><br />\r\nA：30天。<br />\r\n<br />\r\n<strong>Q8：领到的流量可折换成现金或兑换礼品吗？</strong><br />\r\nA：不能。您所领到的流量不能折现、不可兑换成实物礼品或电信其他产品。<br />\r\n<br />\r\n<strong>Q9：领到的流量可以赠送给其他好友使用吗？</strong><br />\r\nA：抱歉不能。平台目前暂不支持&ldquo;流量转赠&rdquo;相关功能。<br />\r\n您在平台上所领到的流量不能转增给好友。<br />\r\n<br />\r\n------积点问题------<br />\r\n<strong>Q1：什么是&ldquo;积点&rdquo;？</strong><br />\r\nA：&ldquo;签个到&rdquo;移动应用平台所发放的积分，即称为&ldquo;积点&rdquo;。<br />\r\n<br />\r\n<strong>Q2：&ldquo;积点&rdquo;有什么用？</strong><br />\r\nA：您可以进入【怎么玩】-【积点兑换】专区兑换礼品；<br />\r\n<br />\r\n<strong>Q3：我是电信用户，该如何领取积点？</strong><br />\r\nA：参加互动活动可获取不等的积点。<br />\r\n<br />\r\n<strong>Q4：我是非电信用户，该如何领取积点？</strong><br />\r\nA：非电信用户通过首次注册、邀请好友、每日签到，参加活动获取相应额度的积点。<br />\r\n<br />\r\n<strong>Q5：如何知晓自己领取了多少积点？</strong><br />\r\nA：您可在登陆后，通过【我的】-【积点历史】板块，您可以查询到自己的积点情况。<br />\r\n<br />\r\n<strong>Q6：领到的积点不使用会过期吗？</strong><br />\r\nA：不会。为了给用户最大的回馈，平台对积点不设置有效期，不用担心积分过期。<br />\r\n<br />\r\n<strong>Q7：领到的积点可以积攒使用吗？</strong><br />\r\nA：可以。您所领到的积分会累积存入您的积点账户中。<br />\r\n<br />\r\n<strong>Q8：领到的积点可以折换成现金吗？</strong><br />\r\nA：抱歉不能。您所领到的积点不可折现。<br />\r\n<br />\r\n<strong>Q9：领到的积点可以兑换哪些物品？</strong><br />\r\nA：您所领取的积点可进行积点兑换：WIFI流量。平台会根据业务拓展不断增加兑换的物品，包括电信其他产品、实物礼品等。<br />\r\n<br />\r\n<strong>Q10：不同账户领到的积点可以合并起来吗？</strong><br />\r\nA：抱歉不能。因此建议您使用同一个账户来获取积分。<br />\r\n<br />\r\n------兑换问题------<br />\r\n<strong>Q1：如何查询我已兑换到的物品记录？</strong><br />\r\nA：您可在登陆后，通过【我的】-【兑换历史】板块，您可以查询到自己的兑换历史记录。<br />\r\n<br />\r\n<strong>Q2：电信用户除了可以兑换WIFI流量外，还能兑换其他物品吗？</strong><br />\r\nA：一期平台业务只能兑换WIFI流量，平台会根据业务需求不断增加兑换的物品供用户选择。后期如: 电信服务、电信宽带升速包、实物礼品等。<br />\r\n<br />\r\n<strong>Q3：需要多少个积点，才能兑换到WIFI流量？</strong><br />\r\nA：（电信/非电信）用户消耗200个积分可换取一个WIFI串码<br />\r\n<br />\r\n<strong>Q4：兑换到的WIFI流量如何发放和使用？</strong><br />\r\nA：平台兑换的WIFI流量是以串码的形式短信发出，一个WIFI时常3小时，使用串码登陆chinanet即可使用。<br />\r\n<br />\r\n<strong>Q5：兑换到的WIFI流量不使用会不会过期？</strong><br />\r\nA：不会，用户不使用串码，则有效期无限。<br />\r\n<br />\r\n<strong>Q6：兑换到的物品可以折换成现金吗？</strong><br />\r\nA：抱歉不能。您所兑换的物品不可折现。<br />\r\n<br />\r\n<strong>Q7：兑换到的物品不喜欢可以换吗？</strong><br />\r\nA：抱歉不能。您所兑换的物品一经兑出不可因任何理由进行更换。<br />\r\n<br />\r\n<strong>Q8：积分兑换的物品是否可以提供发票？</strong><br />\r\nA：抱歉不能。由于积分兑换的并非现金买卖礼品，是平台为答谢广大客户所提供的回馈服务，因此在兑换的物品均不提供发票。<br />\r\n<br />\r\n------活动问题------<br />\r\n<strong>Q1：我已参加过一次活动，可以重复参加吗？</strong><br />\r\nA：根据不同的活动会有不同的参加规则，规则中会有注明，请注意活动信息。<br />\r\n<br />\r\n<strong>Q2：只要参加了活动就能获得礼品吗？</strong><br />\r\nA：不一定。根据不同的活动规则，有不同的礼品奖励机制。<br />\r\n<br />\r\n------联系我们------<br />\r\n<strong>Q1：如何联系在线客服？</strong><br />\r\nA：若您在签个到产品使用中出现任何问题，可直接在微信服务号中进行提问，客服将会在工作日内予以答复。<br />\r\n客服时间：工作日 9:00-18:00</p>\r\n', '');
@@ -961,6 +962,8 @@ INSERT INTO `tb_poll_record` VALUES ('13', '6', '45', null, 'N');
 INSERT INTO `tb_poll_record` VALUES ('14', '6', '43', null, 'N');
 INSERT INTO `tb_product` VALUES ('1', 'WIFI时长卡', '/product/1.jpg', '兑换需：500积点\r\nWIFI时长：3小时 \r\n发放形式：<短信>\r\n使用方式：提取短信中串码登陆ChinaNet进行使用。\r\n有效期限：无限制（串码使用后为3小时时长）。', '0', '500', '2014-08-23 10:57:59');
 INSERT INTO `tb_product` VALUES ('25', 'java', '\\product\\25.jpg', '', '0', '123', '2014-09-30 13:26:28');
+INSERT INTO `tb_section_agent` VALUES ('3', '的', null, null, null);
+INSERT INTO `tb_section_agent` VALUES ('4', 'a', null, null, null);
 INSERT INTO `tb_text` VALUES ('42', '您好，感谢您的关注！', '108');
 INSERT INTO `tb_traffic_detail` VALUES ('140', '22', 'user.sign', '用户签到', '2014-09-25 00:17:46', null, '0', '命﹫运', 'oXM8DuJjAoKkM-638smVE5CYgmN0', '0', null);
 INSERT INTO `tb_traffic_detail` VALUES ('141', '22', 'activity.sign', '活动签到', '2014-09-25 00:19:09', null, '0', '命﹫运', 'oXM8DuJjAoKkM-638smVE5CYgmN0', '0', null);
