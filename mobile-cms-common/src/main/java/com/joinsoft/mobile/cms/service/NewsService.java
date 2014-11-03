@@ -3,6 +3,7 @@ package com.joinsoft.mobile.cms.service;
 import com.joinsoft.framework.orm.DynamicSpecifications;
 import com.joinsoft.framework.orm.SearchFilter;
 
+import com.joinsoft.framework.security.SecurityService;
 import com.joinsoft.mobile.cms.entity.news.TbNews;
 
 import com.joinsoft.mobile.cms.repository.news.newsRepository;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -30,7 +32,8 @@ public class NewsService {
     @Resource
     private newsRepository NewsRepository;
 
-
+    @Resource
+    private SecurityService securityService;
 
     public Page<TbNews> search(Map<String, Object> searchParams, Pageable pageable) {
         Map<String, SearchFilter> filters = SearchFilter.parse(searchParams);
@@ -42,6 +45,25 @@ public class NewsService {
     public TbNews getById(Long id) {
         return NewsRepository.findOne(id);
     }
+   public  void updateOnlineById(String flag,Long... ids){
+/*
+       TbNews dd= NewsRepository.findOne(id);
+       if("up".equals(flag)){
+           dd.setOnline("上线");
+       }else{
+           dd.setOnline("下线");
+       }
+*/
+
+       if("up".equals(flag)){
+           NewsRepository.updateIt("上线",securityService.getLoginUser().getLoginName(),Arrays.asList(ids));
+       }else{
+           NewsRepository.updateIt("下线",securityService.getLoginUser().getLoginName(),Arrays.asList(ids));
+       }
+
+
+
+   }
 
     public void save(TbNews form) {
         /*
@@ -52,7 +74,9 @@ public class NewsService {
 
         form.toEntity(action);
         */
-
+        form.setOperTime(new Date());
+        form.setOnline("上线");
+        form.setOper(securityService.getLoginUser().getLoginName());
         NewsRepository.save(form);
     }
 

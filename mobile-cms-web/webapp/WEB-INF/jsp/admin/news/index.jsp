@@ -4,6 +4,23 @@
 <html>
 <head>
     <title></title>
+    <script type="text/javascript">
+        $(function() {
+                $("#up").click(function(){
+
+                    $("#cmd").attr("action","${ctx}/news/fabu2.do?flag=up");
+                    $("#cmd").attr("method","post");//不要问我为什么，框架欺负我,我很烦~！！！
+                    $("#cmd").submit();
+                })
+            $("#down").click(function(){
+
+                $("#cmd").attr("action","${ctx}/news/fabu2.do?flag=down");
+                $("#cmd").attr("method","post");////不要问我为什么，框架欺负我,我很烦~！！！
+                $("#cmd").submit();
+            })
+        })
+    </script>
+
 </head>
 <body>
 
@@ -21,7 +38,7 @@
     <div class="col-xs-12">
 
         <%@include file="/WEB-INF/jsp/common/message.jsp" %>
-        <form:form action="${ctx}/${type}/index.do" method="post"
+        <form:form action="${ctx}/news/index.do" method="post"
                    class="form-inline">
             <input type="text" name="Q_LIKE_title" value="${param.Q_LIKE_title}" placeholder="标题">
             <a class="btn submitbtn">
@@ -30,14 +47,23 @@
 
         </form:form>
         <div class="hr hr-15 dotted hr-double"></div>
-        <form action="${ctx}/${type}/delete.do" method="post " class="ajaxForm">
+        <form action="${ctx}/news/delete2.do" method="post " id="cmd">
             <a class="btn btn-primary"
-               href="${ctx}/${type}/edit.do">
+               href="${ctx}/news/edit.do">
                 <i class="icon-plus icon-large"></i>添加
             </a>
             <a class="btn submitbtn">
                 <i class="icon-remove icon-large"></i>删除
             </a>
+            <a class="btn" id="up">
+                <i class="icon-remove icon-large"></i>上线
+            </a>
+            <a class="btn" id="down">
+                <i class="icon-remove icon-large"></i>下线
+            </a>
+
+
+
             <hr/>
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover">
@@ -48,6 +74,7 @@
                         </th>
                         <th>#</th>
                         <th>标题</th>
+                        <th>状态</th>
                         <th>创建人</th>
 
                         <th>最后修改时间</th>
@@ -65,22 +92,23 @@
                             </td>
                             <td>${item.id}</td>
                             <td>${item.title}</td>
+                            <td>${item.online}</td>
                             <td>${item.oper}</td>
 
                             <td>
-                                <fmt:formatDate value="${item.lastModified}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                                <fmt:formatDate value="${item.operTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
                             </td>
                             <td>
                                 <div class="action-buttons">
-                                    <a href="${ctx}/${type}/edit.do?id=${item.id}" title="编辑" class="green"><i
+                                    <a href="${ctx}/news/edit.do?id=${item.id}" title="编辑" class="green"><i
                                             class="icon-edit bigger-120"></i></a>
-                                    <a href="${ctx}/${type}/delete.do?id=${item.id}" class="red delete" title="删除"><i
+                                    <a href="${ctx}/news/delete.do?id=${item.id}" class="red" title="删除"><i
                                             class="icon-trash bigger-120"></i></a>
 
-                                    <a href="${ctx}/${type}/up.do?id=${item.id}" class="red delete" title="上线"><i
+                                    <a href="${ctx}/news/fabu.do?id=${item.id}&flag=up"  class="red" title="上线"><i
                                             class="icon-trash bigger-120"></i></a>
 
-                                    <a href="${ctx}/${type}/down.do?id=${item.id}" class="red delete" title="下线"><i
+                                    <a href="${ctx}/news/fabu.do?id=${item.id}&flag=down"  class="red" title="下线"><i
                                             class="icon-trash bigger-120"></i></a>
                                 </div>
 

@@ -43,7 +43,7 @@
             </div>
 
             <div class="form-group">
-                <form:label path="agentName" class="col-sm-3 control-label no-padding-right">部门:</form:label>
+                <form:label path="agentName" class="col-sm-3 control-label no-padding-right">网点名称:</form:label>
                 <div class="col-sm-9">
                     <form:input class="col-sm-6 required" path="agentName" />
                 </div>

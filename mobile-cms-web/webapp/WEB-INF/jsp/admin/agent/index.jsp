@@ -51,7 +51,7 @@
                                     <label><input type="checkbox" class="ace"><span class="lbl"></span></label>
                                 </th>
                                 <th>片区</th>
-                                <th>部门</th>
+                                <th>网点名称</th>
                                 <th>负责人</th>
                                 <th>电话</th>
                                 <th>传真</th>

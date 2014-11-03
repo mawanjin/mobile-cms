@@ -17,16 +17,20 @@ import java.util.Set;
 @Entity
 @Table(name = "tb_news")
 public class TbNews extends AutoModel {
-
     private String title;
     private String content;
-    private String online;
-
-
-
     private Date  operTime;
-    private String oper;
-    private Integer state;
+   private String oper;
+    private Long state;
+    private  String online;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getContent() {
         return content;
@@ -34,14 +38,6 @@ public class TbNews extends AutoModel {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public String getOnline() {
-        return online;
-    }
-
-    public void setOnline(String online) {
-        this.online = online;
     }
 
     public Date getOperTime() {
@@ -56,26 +52,25 @@ public class TbNews extends AutoModel {
         return oper;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public void setOper(String oper) {
         this.oper = oper;
     }
 
-    public Integer getState() {
+    public Long getState() {
         return state;
     }
 
-    public void setState(Integer state) {
+    public void setState(Long state) {
         this.state = state;
     }
 
+    public String getOnline() {
+        return online;
+    }
+
+    public void setOnline(String online) {
+        this.online = online;
+    }
 }
 
 

@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +58,7 @@ public class NewsController extends AdminController {
     @RequestMapping(value = "save", method = RequestMethod.POST)
     public String save(TbNews form, RedirectAttributes model) {
 
+
         newsService.save(form);
         saveSuccess(model, "保存成功");
         return redirect("/news/index.do");
@@ -87,7 +89,7 @@ public class NewsController extends AdminController {
 
 
 
-    @RequestMapping(value = "delete", method = RequestMethod.POST)
+    @RequestMapping(value = "delete2")
     public String delete(Long[] ids, RedirectAttributes model) {
         if (null == ids) {
             saveError(model, "请选择删除的新闻集合");
@@ -110,6 +112,41 @@ public class NewsController extends AdminController {
     }
 
 
+    @RequestMapping(value = "fabu")
+    public String fabu(Long id, String flag,RedirectAttributes model) {
+        if (null == id) {
+            saveError(model, "新闻不存在");
+            return redirect("/news/index.do");
+        }
+        try{
+            newsService.updateOnlineById(flag,id);
+
+        }catch(Exception e){
+
+                saveError(model, "发生系统异常");
+
+
+        }
+        return redirect("/news/index.do");
+    }
+
+    @RequestMapping(value = "fabu2")
+    public String fabu(Long[] ids, String flag,RedirectAttributes model) {
+        if (null == ids) {
+            saveError(model, "新闻集合不存在");
+            return redirect("/news/index.do");
+        }
+        try{
+            newsService.updateOnlineById(flag,ids);
+
+        }catch(Exception e){
+
+            saveError(model, "发生系统异常");
+
+
+        }
+        return redirect("/news/index.do");
+    }
 
 
     @RequestMapping("/getCityByP")
