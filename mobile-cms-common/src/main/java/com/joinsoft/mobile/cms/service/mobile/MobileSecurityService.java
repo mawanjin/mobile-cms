@@ -6,7 +6,6 @@ import com.joinsoft.framework.security.repository.RoleRepository;
 import com.joinsoft.framework.security.repository.UserRepository;
 import com.joinsoft.framework.security.service.SecurityServiceImp;
 import com.joinsoft.mobile.cms.component.eventbus.EventBusService;
-import com.joinsoft.mobile.cms.component.eventbus.reward.RewardEvent;
 import com.joinsoft.mobile.cms.component.eventbus.reward.SystemEventBound;
 import com.joinsoft.mobile.cms.component.eventbus.reward.SystemEventInvite;
 import com.joinsoft.mobile.cms.dto.RewardEventResult;
@@ -141,6 +140,8 @@ public class MobileSecurityService extends SecurityServiceImp {
     }
 
     public boolean isBind() {
+        if(1==1)
+        return true;
         User user = getLoginUser();
         if (null == user) {
             throw new RuntimeException("用户没有登录");

@@ -35,7 +35,7 @@
                             <span class="red">Mobile</span>
                             <span class="white">CMS系统</span>
                         </h1>
-                        <h4 class="blue">&copy; 卓领通讯技术有限公司</h4>
+                        <h4 class="blue">&copy; 上海南青集装箱班轮公司</h4>
                     </div>
 
                     <div class="space-6"></div>

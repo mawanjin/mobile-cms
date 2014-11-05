@@ -36,6 +36,7 @@
     <li><a href="${ctxRoot}/front/at/mall/index.do" class="btn_a">积点兑换</a></li>
     <li><a href="${ctxRoot}/front/cms/show.do?id=1" class="btn_a">帮助Q&A</a></li>
     <li><a href="${ctxRoot}/front/at/my/activity_sign.do" class="btn_a">活动签到</a></li>
+    <li><a href="${ctxRoot}/front/at/agent/index.do" class="btn_a">agent</a></li>
 </ul>
 
 <div class="page bgray">

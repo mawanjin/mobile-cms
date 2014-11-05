@@ -23,10 +23,10 @@
     <logger name="com.joinsoft.mobile.cms" level="DEBUG" additivity="true"/>
     <logger name="com.joinsoft.online.signin.ws" level="INFO" additivity="true" />
 
-    <logger name="org.hibernate.SQL" level="DEBUG" />
+    <logger name="org.hibernate.SQL" level="INFO" />
     <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="INFO" />
 
-    <root level="DEBUG">
+    <root level="INFO">
         <!-- 设置接收所有输出的通道 -->
         <appender-ref ref="console"/>
         <!--

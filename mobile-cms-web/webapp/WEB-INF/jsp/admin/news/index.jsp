@@ -105,11 +105,11 @@
                                     <a href="${ctx}/news/delete.do?id=${item.id}" class="red" title="删除"><i
                                             class="icon-trash bigger-120"></i></a>
 
-                                    <a href="${ctx}/news/fabu.do?id=${item.id}&flag=up"  class="red" title="上线"><i
-                                            class="icon-trash bigger-120"></i></a>
+                                    <a href="${ctx}/news/fabu.do?id=${item.id}&flag=up"  class="yellow" title="上线"><i
+                                            class="icon-circle-arrow-up bigger-120"></i></a>
 
                                     <a href="${ctx}/news/fabu.do?id=${item.id}&flag=down"  class="red" title="下线"><i
-                                            class="icon-trash bigger-120"></i></a>
+                                            class="icon-circle-arrow-down bigger-120"></i></a>
                                 </div>
 
                             </td>
