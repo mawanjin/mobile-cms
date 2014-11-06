@@ -56,10 +56,10 @@
                 <i class="icon-remove icon-large"></i>删除
             </a>
             <a class="btn" id="up">
-                <i class="icon-remove icon-large"></i>上线
+                <i class="icon-circle-arrow-up icon-large"></i>上线
             </a>
             <a class="btn" id="down">
-                <i class="icon-remove icon-large"></i>下线
+                <i class="icon-circle-arrow-down icon-large"></i>下线
             </a>
 
 
