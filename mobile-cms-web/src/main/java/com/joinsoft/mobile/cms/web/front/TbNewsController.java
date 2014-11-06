@@ -32,7 +32,9 @@ public class TbNewsController extends AccessTokenController {
 
     @RequestMapping("findByTbNewsId")
     public String findByTbNewsId(Model model, Long id) {
-        model.addAttribute("new", tbNewsService.findByTbNewsId(id));
+        TbNews news = tbNewsService.findByTbNewsId(id);
+        news.setContent(news.getContent().replace("<html>", "").replace("<head>", "").replace("<title>", "").replace("</title>", "").replace("</head>", "").replace("<body>", "").replace("</body>", "").replace("</html>", ""));
+        model.addAttribute("new", news);
         return FrontController.PORTAL_PREFIX + "/at/news/newsdetails";
     }
 

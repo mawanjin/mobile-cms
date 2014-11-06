@@ -33,7 +33,7 @@ public class SectionAgentController extends AccessTokenController {
     public String findByTbSectionAgentId(Long id, Model model) {
 //        List<TbAgent> agents = agentService.findByTbSectionAgentId(id);
         model.addAttribute("sections", sectionService.getAllAgents());
-        model.addAttribute("agents", agentService.findByTbSectionAgentId(id));
+        model.addAttribute("agents", id == 0 ? agentService.getAllAgents() : agentService.findByTbSectionAgentId(id));
         model.addAttribute("sections_id", id);
 //        StringBuffer json = new StringBuffer("[");
 //        for (int i = 0; i < agents.size(); i++) {

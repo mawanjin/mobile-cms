@@ -20,7 +20,8 @@ public class TbNewsService {
     private TbNewsRepository tbNewsRepository;
 
     public TbNews findByTbNewsId(Long id) {
-        return tbNewsRepository.findByTbNewsId(id);
+        TbNews news = tbNewsRepository.findByTbNewsId(id);
+        return new TbNews(news.getTitle(), news.getContent(),news.getOperTime());
     }
 
     @Transactional(propagation = Propagation.NOT_SUPPORTED)

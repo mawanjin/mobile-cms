@@ -18,36 +18,36 @@
     <sitemesh:head/>
 </head>
 <body>
-<div class="menu">
-    <ul>
-        <li class="m1"><a href="${ctxRoot}/front/cms/index.do"><span>活动</span></a></li>
-        <li class="m2"><a href=""><span>我的</span></a></li>
-        <li class="m3"><a href=""><span>怎么玩</span></a></li>
-        <li class="m4"><a href="${ctxRoot}/front/at/my/sign.do"><span>签个到</span></a></li>
-    </ul>
-</div>
-<ul class="submenu_1">
-    <li><a href="${ctxRoot}/front/at/my/traffic.do" class="btn_a">流量历史</a></li>
-    <li><a href="${ctxRoot}/front/at/my/point.do" class="btn_a">积点历史</a></li>
-    <li><a href="${ctxRoot}/front/at/my/order.do" class="btn_a">兑换历史</a></li>
-</ul>
-<ul class="submenu_2">
-    <li><a href="${ctxRoot}/front/cms/index.do" class="btn_a">热门活动</a></li>
-    <li><a href="${ctxRoot}/front/at/mall/index.do" class="btn_a">积点兑换</a></li>
-    <li><a href="${ctxRoot}/front/cms/show.do?id=1" class="btn_a">帮助Q&A</a></li>
-    <li><a href="${ctxRoot}/front/at/my/activity_sign.do" class="btn_a">活动签到</a></li>
-    <li><a href="${ctxRoot}/front/at/agent/index.do" class="btn_a">agent</a></li>
-</ul>
+<%--<div class="menu">--%>
+    <%--<ul>--%>
+        <%--<li class="m1"><a href="${ctxRoot}/front/cms/index.do"><span>活动</span></a></li>--%>
+        <%--<li class="m2"><a href=""><span>我的</span></a></li>--%>
+        <%--<li class="m3"><a href=""><span>怎么玩</span></a></li>--%>
+        <%--<li class="m4"><a href="${ctxRoot}/front/at/my/sign.do"><span>签个到</span></a></li>--%>
+    <%--</ul>--%>
+<%--</div>--%>
+<%--<ul class="submenu_1">--%>
+    <%--<li><a href="${ctxRoot}/front/at/my/traffic.do" class="btn_a">流量历史</a></li>--%>
+    <%--<li><a href="${ctxRoot}/front/at/my/point.do" class="btn_a">积点历史</a></li>--%>
+    <%--<li><a href="${ctxRoot}/front/at/my/order.do" class="btn_a">兑换历史</a></li>--%>
+<%--</ul>--%>
+<%--<ul class="submenu_2">--%>
+    <%--<li><a href="${ctxRoot}/front/cms/index.do" class="btn_a">热门活动</a></li>--%>
+    <%--<li><a href="${ctxRoot}/front/at/mall/index.do" class="btn_a">积点兑换</a></li>--%>
+    <%--<li><a href="${ctxRoot}/front/cms/show.do?id=1" class="btn_a">帮助Q&A</a></li>--%>
+    <%--<li><a href="${ctxRoot}/front/at/my/activity_sign.do" class="btn_a">活动签到</a></li>--%>
+    <%--<li><a href="${ctxRoot}/front/at/agent/index.do" class="btn_a">agent</a></li>--%>
+<%--</ul>--%>
 
-<div class="page bgray">
-    <sitemesh:body/>
-    <div class="exc_inforbox">
-        <img src="${ctxRoot}/static/front/images/btn_close.png" class="btn_quit"/>
-        <img src="${ctxRoot}/static/front/images/icon_hint.png" class="hinticon"/>
+<%--<div class="page bgray">--%>
+    <%--<sitemesh:body/>--%>
+    <%--<div class="exc_inforbox">--%>
+        <%--<img src="${ctxRoot}/static/front/images/btn_close.png" class="btn_quit"/>--%>
+        <%--<img src="${ctxRoot}/static/front/images/icon_hint.png" class="hinticon"/>--%>
 
-        <h1 id="info_message"></h1>
-    </div>
-</div>
+        <%--<h1 id="info_message"></h1>--%>
+    <%--</div>--%>
+<%--</div>--%>
 
 </body>
 </html>
