@@ -24,6 +24,7 @@ public abstract class SimpleCmsNodeController extends CmsController {
         Map<String, Object> searchParams = HttpRequests.getParametersStartingWith(request, "Q_");
         searchParams.put("EQ_type", getType().toString());
         Page<TbCmsNode> page = nodeService.searchContent(searchParams, buildPageRequest(request));
+
         model.addAttribute("page", page);
         model.addAttribute("type", getType().toString().toLowerCase());
         return CmsController.PORTAL_PREFIX + "/index";

@@ -17,7 +17,7 @@
     <decorator name="basic" page="admin.jsp">
         <pattern>/component/basic/*</pattern>
     </decorator>
-    <decorator name="front" page="front.jsp">
-        <pattern>/front/*</pattern>
-    </decorator>
+    <!--<decorator name="front" page="front.jsp">-->
+        <!--<pattern>/front/*</pattern>-->
+    <!--</decorator>-->
 </decorators>

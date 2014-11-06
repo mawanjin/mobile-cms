@@ -33,17 +33,19 @@
 
 </script>
 <div id="mytable">
-    <h1 style="margin: 6px 7px;background:#66cccc;color:#ffffff;">网点查询</h1>
+    <h2 style="background:#6699cc;color:#ffffff;margin-bottom: 25px;">网点查询</h2>
 
-    <p style="margin-left: 7px;margin-bottom: 6px;">
+    <div style="width: 100%;text-align: center;margin-bottom: 25px;">
         <span>片区:</span>&nbsp;&nbsp;&nbsp;
-        <select style="width: 100px;" id="section" mSty="blueCircle">
+        <select id="section" mSty="blueCircle">
+            <option value="0">请选择片区</option>
             <c:forEach var="section" items="${sections}">
                 <option
                         <c:if test="${section.id eq sections_id}">selected="selected"</c:if>
                         value="${section.id}">${section.sectionName}</option>
             </c:forEach>
-        </select>&nbsp;&nbsp;&nbsp;<a href="#" id="select" class="button white bigrounded">查询</a></p>
+        </select></div>
+    <p><a href="#" id="select" style="width: 99%;margin-bottom: 25px;" class="button white bigrounded">查询</a></p>
     <table class="bordered">
         <caption></caption>
         <thead>
