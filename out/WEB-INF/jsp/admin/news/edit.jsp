@@ -31,7 +31,7 @@
             <div class="form-group">
                 <form:label path="content" class="col-sm-2 control-label no-padding-right">具体内容:</form:label>
                 <div class="col-sm-10">
-                    <form:textarea class="col-sm-12 rich_simple" rows="20" path="content"/>
+                    <form:textarea class="col-sm-12 rich_article" rows="20" path="content"/>
                 </div>
             </div>
 
