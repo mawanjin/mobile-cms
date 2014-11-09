@@ -18,7 +18,8 @@
 	http://docs.cksource.com/CKFinder_2.x/Developers_Guide/Java/Configuration/baseURL_and_baseDir
 	-->
 	<baseDir></baseDir>
-	<baseURL>http://218.1.64.75/cms/upload/ckeditor/</baseURL>
+	<!--<baseURL>http://218.1.64.75/cms/upload/ckeditor/</baseURL>-->
+	<baseURL>http://localhost:8080/cms/upload/ckeditor/</baseURL>
 	<licenseKey></licenseKey>
 	<licenseName></licenseName>
 	<!--
