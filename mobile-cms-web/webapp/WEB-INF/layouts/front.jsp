@@ -39,15 +39,15 @@
     <%--<li><a href="${ctxRoot}/front/at/agent/index.do" class="btn_a">agent</a></li>--%>
 <%--</ul>--%>
 
-<%--<div class="page bgray">--%>
-    <%--<sitemesh:body/>--%>
-    <%--<div class="exc_inforbox">--%>
-        <%--<img src="${ctxRoot}/static/front/images/btn_close.png" class="btn_quit"/>--%>
-        <%--<img src="${ctxRoot}/static/front/images/icon_hint.png" class="hinticon"/>--%>
+<div class="page bgray">
+    <sitemesh:body/>
+    <div class="exc_inforbox">
+        <img src="${ctxRoot}/static/front/images/btn_close.png" class="btn_quit"/>
+        <img src="${ctxRoot}/static/front/images/icon_hint.png" class="hinticon"/>
 
-        <%--<h1 id="info_message"></h1>--%>
-    <%--</div>--%>
-<%--</div>--%>
+        <h1 id="info_message"></h1>
+    </div>
+</div>
 
 </body>
 </html>

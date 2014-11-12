@@ -2,7 +2,7 @@
 <%@include file="/WEB-INF/jsp/common/taglib.jsp" %>
 <html>
 <head>
-    <title></title>
+    <title>hello</title>
     <link rel="stylesheet" href="${ctxRoot}/static/css/agent.css"/>
     <script type="text/javascript" src="${ctxRoot}/static/js/mSelect.js"></script>
 </head>

@@ -45,7 +45,7 @@
                     </c:otherwise>
                     </c:choose>
                 </td>
-                <td style="text-align: right;"><fmt:formatDate value="${new.oper_time}"
+                <td style="text-align: right;"><fmt:formatDate value="${new.operTime}"
                                                                type="date"/>&nbsp;&nbsp;&nbsp;</td>
             </tr>
         </c:forEach>
