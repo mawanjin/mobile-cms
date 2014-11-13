@@ -12,8 +12,8 @@
     *border-collapse: collapse; /* IE7 and lower */
     border-spacing: 0;
     width: 99%;
-    border-top: solid #ccc 1px;
-    border-bottom: solid #ccc 1px;
+    border-top: solid #ccc 0px;
+    border-bottom: solid #ccc 0px;
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
@@ -36,7 +36,8 @@
     border-top: 1px dashed #ccc;
     border-right: none;
     padding: 10px;
-    text-align: left;
+    text-align: center;
+
 }
 
 .bordered tr:nth-of-type(even) {

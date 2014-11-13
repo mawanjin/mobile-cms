@@ -5,7 +5,6 @@
     <title></title>
     <link rel="stylesheet" href="${ctxRoot}/static/css/agent.css"/>
     <script type="text/javascript" src="${ctxRoot}/static/js/mSelect.js"></script>
-    <script src='${ctxRoot}/static/framework/js/jquery-1.10.2.min.js'></script>
 </head>
 <body>
 <script>
