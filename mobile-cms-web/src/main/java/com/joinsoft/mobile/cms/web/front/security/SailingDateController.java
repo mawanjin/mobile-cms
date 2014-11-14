@@ -66,7 +66,7 @@ public class SailingDateController extends AccessTokenController {
         }
         model.addAttribute("sailings", sailings);
         model.addAttribute("type", 2);
-        model.addAttribute("mort", mort);
+        model.addAttribute("mport", mort);
         return FrontController.PORTAL_PREFIX + "/at/sailing/index";
     }
 
