@@ -1,9 +1,11 @@
 package com.joinsoft.mobile.cms.service;
 
+import com.joinsoft.mobile.cms.util.Common;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.net.URLEncoder;
 
@@ -14,7 +16,7 @@ import java.net.URLEncoder;
 public class GoodsFollowingService {
 
     public String findGoods(String yundan, String box) {
-        String url = "http://180.173.142.45/cmsService/admin_fetchHuo.action";
+        String url = "http://" + Common.COMM_IP + "/cmsService/admin_fetchHuo.action";
         HttpClient client = new HttpClient();
         HttpMethod method = null;
         try {

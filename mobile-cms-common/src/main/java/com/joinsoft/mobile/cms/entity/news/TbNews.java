@@ -19,15 +19,6 @@ public class TbNews extends AutoModel {
     private String online;
     private Long state;
 
-    public TbNews(String title, String content, Date operTime) {
-        this.title = title;
-        this.content = content;
-        this.operTime = operTime;
-    }
-
-    public TbNews() {
-    }
-
     public String getTitle() {
         return title;
     }
@@ -44,6 +35,13 @@ public class TbNews extends AutoModel {
         this.content = content;
     }
 
+    public Date getOperTime() {
+        return operTime;
+    }
+
+    public void setOperTime(Date operTime) {
+        this.operTime = operTime;
+    }
 
     public String getOper() {
         return oper;
@@ -69,12 +67,13 @@ public class TbNews extends AutoModel {
         this.state = state;
     }
 
-    public Date getOperTime() {
-        return operTime;
+    public TbNews(String title, String content, Date operTime) {
+        this.title = title;
+        this.content = content;
+        this.operTime = operTime;
     }
 
-    public void setOperTime(Date operTime) {
-        this.operTime = operTime;
+    public TbNews() {
     }
 
     @Override

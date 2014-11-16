@@ -25,7 +25,7 @@ public interface IEventHandler {
 	 * @param args params for event handler.
 	 * @param configuration connector configuration
 	 * @return false if break executing command.
-	 * @throws ConnectorException when error occurs.
+	 * @throws com.ckfinder.connector.errors.ConnectorException when error occurs.
 	 */
 	public boolean runEventHandler(EventArgs args, IConfiguration configuration)
 			throws ConnectorException;

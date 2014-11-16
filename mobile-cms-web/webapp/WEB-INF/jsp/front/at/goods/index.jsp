@@ -1,9 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/WEB-INF/jsp/common/taglib.jsp" %>
 <html>
+
 <head>
+    <meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=0.5, minimum-scale=0.2, maximum-scale=2.0, user-scalable=yes"/>
     <title></title>
-    <link rel="stylesheet" href="${ctxRoot}/static/css/agent.css"/>
+    <link rel="stylesheet" href="${ctxRoot}/static/css/goods.css"/>
+
 </head>
 <body>
 <script>
@@ -17,7 +20,7 @@
     });
 </script>
 <div id="mytable"
-     style="width: 100%;height: 100%;background: #ffffff;font-family: 'trebuchet MS', 'Lucida sans', Arial;font-size: 12px;color: #444;">
+     >
     <h2 style="background:#6699cc;color:#ffffff;">货物跟踪</h2>
 
     <div style="margin-top:10px;text-align: center;">

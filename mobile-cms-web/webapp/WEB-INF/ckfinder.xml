@@ -17,8 +17,7 @@
 	Configure the location of uploaded files. See the following article for more details:
 	http://docs.cksource.com/CKFinder_2.x/Developers_Guide/Java/Configuration/baseURL_and_baseDir
 	-->
-	<baseDir>/Users/abcd/git/mobile-cms/out/upload/ckeditor/</baseDir>
-	<!--<baseURL>http://218.1.64.75/cms/upload/ckeditor/</baseURL>-->
+	<baseDir></baseDir>
 	<baseURL>http://localhost:8080/cms/upload/ckeditor/</baseURL>
 	<licenseKey></licenseKey>
 	<licenseName></licenseName>
@@ -106,8 +105,8 @@
 	<thumbs>
 		<enabled>true</enabled>
 		<url>%BASE_URL%_thumbs/</url>
-		<directory>/Users/abcd/git/mobile-cms/out/upload/ckeditor/_thumbs</directory>
-		<directAccess>true</directAccess>
+		<directory>%BASE_DIR%_thumbs</directory>
+		<directAccess>false</directAccess>
 		<maxHeight>100</maxHeight>
 		<maxWidth>100</maxWidth>
 		<quality>80</quality>

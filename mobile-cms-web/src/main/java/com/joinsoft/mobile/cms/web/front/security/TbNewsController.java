@@ -1,8 +1,8 @@
-package com.joinsoft.mobile.cms.web.front;
+package com.joinsoft.mobile.cms.web.front.security;
 
 import com.joinsoft.mobile.cms.entity.news.TbNews;
 import com.joinsoft.mobile.cms.service.TbNewsService;
-import com.joinsoft.mobile.cms.web.front.security.AccessTokenController;
+import com.joinsoft.mobile.cms.web.front.FrontController;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +34,7 @@ public class TbNewsController extends AccessTokenController {
     public String findByTbNewsId(Model model, Long id) {
         TbNews news = tbNewsService.findByTbNewsId(id);
         news.setContent(news.getContent().replace("<html>", "").replace("<head>", "").replace("<title>", "").replace("</title>", "").replace("</head>", "").replace("<body>", "").replace("</body>", "").replace("</html>", ""));
-        model.addAttribute("new", news);
+        model.addAttribute("new1", news);
         return FrontController.PORTAL_PREFIX + "/at/news/newsdetails";
     }
 
