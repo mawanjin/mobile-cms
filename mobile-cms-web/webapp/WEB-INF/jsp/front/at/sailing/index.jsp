@@ -116,6 +116,7 @@
         </tr>
         </thead>
         <tbody>
+
         <c:forEach var="sailing" items="${sailings}">
             <tr>
                 <td class="row">${sailing.fight}</td>
@@ -126,6 +127,13 @@
                 <td class="row">${sailing.etime}</td>
             </tr>
         </c:forEach>
+
+
+        <c:if test="${not empty hint}">
+            <tr>
+                <td colspan="6" class="row">未找到符合条件的记录!!</td>
+            </tr>
+        </c:if>
         </tbody>
     </table>
 </div>

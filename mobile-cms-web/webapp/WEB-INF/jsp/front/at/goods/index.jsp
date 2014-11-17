@@ -75,6 +75,11 @@
                 <td class="row"><fmt:formatDate value="${info.预计开航时间}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
             </tr>
         </c:forEach>
+        <c:if test="${not empty hint}">
+            <tr>
+                <td class="row">未找到符合条件的记录!!</td>
+            </tr>
+        </c:if>
         </tbody>
     </table>
 </div>
