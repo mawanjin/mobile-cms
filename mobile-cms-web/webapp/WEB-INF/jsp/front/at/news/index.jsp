@@ -24,6 +24,7 @@
             location.href = "${ctxRoot}/front/at/news/findPage.do?page_number=" + page;
         }
     </script>
+
 </head>
 <body>
 <div id="mytable"
@@ -31,10 +32,10 @@
     <input type="hidden" id="page" value="${page_number}"/>
     <input type="hidden" id="end" value="${end}-1"/>
 
-    <h2 style="background:#6699cc;color:#ffffff;">新闻中心</h2>
+    <h2 style="background:#6699cc;color:#ffffff;padding-top:10px;padding-bottom: 10px;padding-left: 5px;margin-bottom: 10px;">新闻中心</h2>
     <table style="width: 98%;margin: 0 auto;border:0px solid red;" cellspacing="2">
         <c:forEach var="new1" items="${news}">
-            <tr style="border-bottom: 1px dotted #000000;height: 25px;">
+            <tr style="border-bottom: 1px dotted #000000;height: 35px;font-size: 15px;">
                 <td>&nbsp;&nbsp;&nbsp;<a href="${ctxRoot}/front/at/news/findByTbNewsId.do?id=${new1.id}"
                                          style="color: #444;">
                     <c:choose>
