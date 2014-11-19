@@ -28,132 +28,132 @@ import java.io.File;
  */
 public class RenameFolderCommand extends XMLCommand implements IPostCommand {
 
-	private String newFolderName;
-	private String newFolderPath;
+    private String newFolderName;
+    private String newFolderPath;
 
-	@Override
-	protected void createXMLChildNodes(final int errorNum, final Element rootElement)
-			throws ConnectorException {
-		if (errorNum == Constants.Errors.CKFINDER_CONNECTOR_ERROR_NONE) {
-			createRenamedFolderNode(rootElement);
-		}
+    @Override
+    protected void createXMLChildNodes(final int errorNum, final Element rootElement)
+            throws ConnectorException {
+        if (errorNum == Constants.Errors.CKFINDER_CONNECTOR_ERROR_NONE) {
+            createRenamedFolderNode(rootElement);
+        }
 
-	}
+    }
 
-	/**
-	 * creates XML node for renamed folder.
-	 *
-	 * @param rootElement XML root element.
-	 */
-	private void createRenamedFolderNode(final Element rootElement) {
-		Element element = creator.getDocument().createElement("RenamedFolder");
-		element.setAttribute("newName", this.newFolderName);
-		element.setAttribute("newPath", this.newFolderPath);
-		element.setAttribute("newUrl", configuration.getTypes().get(this.type).getUrl() + this.newFolderPath);
-		rootElement.appendChild(element);
+    /**
+     * creates XML node for renamed folder.
+     *
+     * @param rootElement XML root element.
+     */
+    private void createRenamedFolderNode(final Element rootElement) {
+        Element element = creator.getDocument().createElement("RenamedFolder");
+        element.setAttribute("newName", this.newFolderName);
+        element.setAttribute("newPath", this.newFolderPath);
+        element.setAttribute("newUrl", configuration.getTypes().get(this.type).getUrl() + this.newFolderPath);
+        rootElement.appendChild(element);
 
-	}
+    }
 
-	@Override
-	protected int getDataForXml() {
+    @Override
+    protected int getDataForXml() {
 
-		try {
-			checkParam(newFolderName);
+        try {
+            checkParam(newFolderName);
 
-		} catch (ConnectorException e) {
-			return e.getErrorCode();
-		}
+        } catch (ConnectorException e) {
+            return e.getErrorCode();
+        }
 
-		if (!AccessControlUtil.getInstance(configuration).checkFolderACL(this.type,
-				this.currentFolder,
-				this.userRole,
-				AccessControlUtil.CKFINDER_CONNECTOR_ACL_FOLDER_RENAME)) {
-			return Constants.Errors.CKFINDER_CONNECTOR_ERROR_UNAUTHORIZED;
-		}
+        if (!AccessControlUtil.getInstance(configuration).checkFolderACL(this.type,
+                this.currentFolder,
+                this.userRole,
+                AccessControlUtil.CKFINDER_CONNECTOR_ACL_FOLDER_RENAME)) {
+            return Constants.Errors.CKFINDER_CONNECTOR_ERROR_UNAUTHORIZED;
+        }
 
-		if (configuration.forceASCII()) {
-			this.newFolderName = FileUtils.convertToASCII(this.newFolderName);
-		}
+        if (configuration.forceASCII()) {
+            this.newFolderName = FileUtils.convertToASCII(this.newFolderName);
+        }
 
-		if (FileUtils.checkIfDirIsHidden(this.newFolderName, configuration)
-				|| !FileUtils.checkFolderName(this.newFolderName, configuration)) {
-			return Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_NAME;
-		}
+        if (FileUtils.checkIfDirIsHidden(this.newFolderName, configuration)
+                || !FileUtils.checkFolderName(this.newFolderName, configuration)) {
+            return Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_NAME;
+        }
 
-		if (this.currentFolder.equals("/")) {
-			return Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_REQUEST;
-		}
+        if (this.currentFolder.equals("/")) {
+            return Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_REQUEST;
+        }
 
-		File dir = new File(configuration.getTypes().get(this.type).getPath()
-				+ this.currentFolder);
-		try {
-			if (!dir.isDirectory()) {
-				return Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_REQUEST;
-			}
-			setNewFolder();
-			File newDir = new File(configuration.getTypes().get(this.type).getPath()
-					+ this.newFolderPath);
-			if (newDir.exists()) {
-				return Constants.Errors.CKFINDER_CONNECTOR_ERROR_ALREADY_EXIST;
-			}
-			if (dir.renameTo(newDir)) {
-				renameThumb();
-			} else {
-				return Constants.Errors.CKFINDER_CONNECTOR_ERROR_ACCESS_DENIED;
-			}
-		} catch (SecurityException e) {
-			if (configuration.isDebugMode()) {
-				throw e;
-			} else {
-				return Constants.Errors.CKFINDER_CONNECTOR_ERROR_ACCESS_DENIED;
-			}
-		}
+        File dir = new File(configuration.getTypes().get(this.type).getPath()
+                + this.currentFolder);
+        try {
+            if (!dir.isDirectory()) {
+                return Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_REQUEST;
+            }
+            setNewFolder();
+            File newDir = new File(configuration.getTypes().get(this.type).getPath()
+                    + this.newFolderPath);
+            if (newDir.exists()) {
+                return Constants.Errors.CKFINDER_CONNECTOR_ERROR_ALREADY_EXIST;
+            }
+            if (dir.renameTo(newDir)) {
+                renameThumb();
+            } else {
+                return Constants.Errors.CKFINDER_CONNECTOR_ERROR_ACCESS_DENIED;
+            }
+        } catch (SecurityException e) {
+            if (configuration.isDebugMode()) {
+                throw e;
+            } else {
+                return Constants.Errors.CKFINDER_CONNECTOR_ERROR_ACCESS_DENIED;
+            }
+        }
 
 
-		return Constants.Errors.CKFINDER_CONNECTOR_ERROR_NONE;
-	}
+        return Constants.Errors.CKFINDER_CONNECTOR_ERROR_NONE;
+    }
 
-	/**
-	 * renames thumb folder.
-	 */
-	private void renameThumb() {
-		File thumbDir = new File(configuration.getThumbsPath()
-				+ File.separator
-				+ type
-				+ this.currentFolder);
-		File newThumbDir = new File(configuration.getThumbsPath()
-				+ File.separator
-				+ type
-				+ this.newFolderPath);
-		thumbDir.renameTo(newThumbDir);
+    /**
+     * renames thumb folder.
+     */
+    private void renameThumb() {
+        File thumbDir = new File(configuration.getThumbsPath()
+                + File.separator
+                + type
+                + this.currentFolder);
+        File newThumbDir = new File(configuration.getThumbsPath()
+                + File.separator
+                + type
+                + this.newFolderPath);
+        thumbDir.renameTo(newThumbDir);
 
-	}
+    }
 
-	/**
-	 * sets new folder name.
-	 */
-	private void setNewFolder() {
-		String tmp1 = this.currentFolder.substring(0,
-				this.currentFolder.lastIndexOf('/'));
-		this.newFolderPath = tmp1.substring(0,
-				tmp1.lastIndexOf('/') + 1).concat(this.newFolderName);
-		this.newFolderPath = PathUtils.addSlashToEnd(this.newFolderPath);
+    /**
+     * sets new folder name.
+     */
+    private void setNewFolder() {
+        String tmp1 = this.currentFolder.substring(0,
+                this.currentFolder.lastIndexOf('/'));
+        this.newFolderPath = tmp1.substring(0,
+                tmp1.lastIndexOf('/') + 1).concat(this.newFolderName);
+        this.newFolderPath = PathUtils.addSlashToEnd(this.newFolderPath);
 
-	}
+    }
 
-	/**
-	 * @param request request
-	 * @param configuration connector conf
-	 * @param params execute additional params.
-	 * @throws com.ckfinder.connector.errors.ConnectorException when error occurs.
-	 */
-	@Override
-	public void initParams(final HttpServletRequest request,
-			final IConfiguration configuration,
-			final Object... params) throws ConnectorException {
+    /**
+     * @param request request
+     * @param configuration connector conf
+     * @param params execute additional params.
+     * @throws com.ckfinder.connector.errors.ConnectorException when error occurs.
+     */
+    @Override
+    public void initParams(final HttpServletRequest request,
+                           final IConfiguration configuration,
+                           final Object... params) throws ConnectorException {
 
-		super.initParams(request, configuration);
-		this.newFolderName = getParameter(request, "NewFolderName");
+        super.initParams(request, configuration);
+        this.newFolderName = getParameter(request, "NewFolderName");
 
-	}
+    }
 }
