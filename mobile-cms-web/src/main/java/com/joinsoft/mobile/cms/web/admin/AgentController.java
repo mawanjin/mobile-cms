@@ -114,7 +114,7 @@ public class AgentController extends AdminController {
         try{
         agentService.saveAgent(form);
         }catch(Exception e){
-            model.addAttribute("id",form.getId());
+            model.addFlashAttribute("id",form.getId());
             if(e instanceof org.springframework.dao.DataIntegrityViolationException){
                 saveError(model, "网点名称重名,请重新输入");
 
