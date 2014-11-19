@@ -11,14 +11,13 @@
  */
 package com.ckfinder.connector.configuration;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
 import com.ckfinder.connector.data.AccessControlLevel;
 import com.ckfinder.connector.data.PluginInfo;
 import com.ckfinder.connector.data.ResourceType;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Interface for configuration.

@@ -11,24 +11,6 @@
  */
 package com.ckfinder.connector.configuration;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-
-import javax.servlet.ServletConfig;
-import javax.servlet.http.HttpServletRequest;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
 import com.ckfinder.connector.ServletContextFactory;
 import com.ckfinder.connector.data.AccessControlLevel;
 import com.ckfinder.connector.data.PluginInfo;
@@ -36,6 +18,14 @@ import com.ckfinder.connector.data.PluginParam;
 import com.ckfinder.connector.data.ResourceType;
 import com.ckfinder.connector.utils.FileUtils;
 import com.ckfinder.connector.utils.PathUtils;
+import org.w3c.dom.*;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.http.HttpServletRequest;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
+import java.util.*;
 
 /**
  * Class loads configuration from XML file.

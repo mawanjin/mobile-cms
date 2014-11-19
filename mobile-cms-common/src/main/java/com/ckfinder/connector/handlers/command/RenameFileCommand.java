@@ -11,17 +11,15 @@
  */
 package com.ckfinder.connector.handlers.command;
 
-import java.io.File;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.w3c.dom.Element;
-
 import com.ckfinder.connector.configuration.Constants;
 import com.ckfinder.connector.configuration.IConfiguration;
 import com.ckfinder.connector.errors.ConnectorException;
 import com.ckfinder.connector.utils.AccessControlUtil;
 import com.ckfinder.connector.utils.FileUtils;
+import org.w3c.dom.Element;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 
 /**
  * Class to handle
@@ -82,7 +80,7 @@ public class RenameFileCommand extends XMLCommand implements IPostCommand {
 		}
 
 		int checkFileExt = FileUtils.checkFileExtension(this.newFileName,
-				this.configuration.getTypes().get(this.type));
+                this.configuration.getTypes().get(this.type));
 		if (checkFileExt == 1) {
 			return Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_EXTENSION;
 		}
@@ -92,18 +90,18 @@ public class RenameFileCommand extends XMLCommand implements IPostCommand {
 
 		if (!FileUtils.checkFileName(this.fileName)
 				|| FileUtils.checkIfFileIsHidden(this.fileName,
-				configuration)) {
+                configuration)) {
 			return Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_REQUEST;
 		}
 
 		if (!FileUtils.checkFileName(this.newFileName, configuration)
 				|| FileUtils.checkIfFileIsHidden(this.newFileName,
-				configuration)) {
+                configuration)) {
 			return Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_NAME;
 		}
 
 		if (FileUtils.checkFileExtension(this.fileName,
-				this.configuration.getTypes().get(this.type)) == 1) {
+                this.configuration.getTypes().get(this.type)) == 1) {
 			return Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_REQUEST;
 		}
 

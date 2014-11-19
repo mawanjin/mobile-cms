@@ -11,9 +11,10 @@
  */
 package com.ckfinder.connector.utils;
 
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.List;
+import com.ckfinder.connector.configuration.Constants;
+import com.ckfinder.connector.errors.ConnectorException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,12 +22,9 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
-import com.ckfinder.connector.configuration.Constants;
-import com.ckfinder.connector.errors.ConnectorException;
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class to create XML document.

@@ -11,17 +11,16 @@
  */
 package com.ckfinder.connector.handlers.command;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.Cookie;
-
-import org.w3c.dom.Element;
-
 import com.ckfinder.connector.configuration.Constants;
 import com.ckfinder.connector.configuration.IConfiguration;
 import com.ckfinder.connector.data.XmlAttribute;
 import com.ckfinder.connector.data.XmlElementData;
 import com.ckfinder.connector.errors.ConnectorException;
 import com.ckfinder.connector.utils.AccessControlUtil;
+import org.w3c.dom.Element;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Class to handle

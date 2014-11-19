@@ -11,9 +11,10 @@
  */
 package com.ckfinder.connector.configuration;
 
-import java.util.regex.Pattern;
-import javax.servlet.http.HttpServletRequest;
 import com.ckfinder.connector.ServletContextFactory;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.regex.Pattern;
 
 /**
  * Path builder that creates default values of baseDir and baseURL.

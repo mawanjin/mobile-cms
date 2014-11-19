@@ -11,9 +11,9 @@
  */
 package com.ckfinder.connector.configuration;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.ckfinder.connector.utils.PathUtils;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Path builder that creates default values of baseDir and baseURL.

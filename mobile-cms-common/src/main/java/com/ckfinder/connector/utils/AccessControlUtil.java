@@ -11,12 +11,12 @@
  */
 package com.ckfinder.connector.utils;
 
+import com.ckfinder.connector.configuration.IConfiguration;
+import com.ckfinder.connector.data.AccessControlLevel;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.ckfinder.connector.configuration.IConfiguration;
-import com.ckfinder.connector.data.AccessControlLevel;
 
 /**
  * Class to generate ACL values.

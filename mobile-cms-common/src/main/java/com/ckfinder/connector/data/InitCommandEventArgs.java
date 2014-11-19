@@ -11,9 +11,8 @@
  */
 package com.ckfinder.connector.data;
 
-import org.w3c.dom.Element;
-
 import com.ckfinder.connector.utils.XMLCreator;
+import org.w3c.dom.Element;
 
 /**
  * Event data for {@link com.ckfinder.connector.configuration.Events.EventTypes#InitCommand}

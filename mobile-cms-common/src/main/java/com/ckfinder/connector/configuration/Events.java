@@ -11,16 +11,16 @@
  */
 package com.ckfinder.connector.configuration;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.ckfinder.connector.data.EventArgs;
 import com.ckfinder.connector.data.EventCommandData;
 import com.ckfinder.connector.data.IEventHandler;
 import com.ckfinder.connector.data.PluginInfo;
 import com.ckfinder.connector.errors.ConnectorException;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Provides support for event handlers.

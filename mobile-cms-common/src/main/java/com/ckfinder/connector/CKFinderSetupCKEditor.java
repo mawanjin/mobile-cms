@@ -11,14 +11,13 @@
  */
 package com.ckfinder.connector;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.ckfinder.connector.utils.PathUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
-
-import com.ckfinder.connector.utils.PathUtils;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Source code of

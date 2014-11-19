@@ -11,16 +11,6 @@
  */
 package com.ckfinder.connector.handlers.command;
 
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.w3c.dom.Element;
-
 import com.ckfinder.connector.configuration.Constants;
 import com.ckfinder.connector.configuration.Events.EventTypes;
 import com.ckfinder.connector.data.InitCommandEventArgs;
@@ -30,7 +20,15 @@ import com.ckfinder.connector.errors.ConnectorException;
 import com.ckfinder.connector.utils.AccessControlUtil;
 import com.ckfinder.connector.utils.FileUtils;
 import com.ckfinder.connector.utils.PathUtils;
+import org.w3c.dom.Element;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class to handle
@@ -228,7 +226,7 @@ public class InitCommand extends XMLCommand {
 				childElement.setAttribute("maxSize", (maxSize != null && maxSize > 0) ? maxSize.toString() : "0");
 				childElement.setAttribute("hasChildren",
 						FileUtils.hasChildren("/", new File(PathUtils.escape(resourceType.getPath())),
-						configuration, resourceType.getName(), this.userRole).toString());
+                                configuration, resourceType.getName(), this.userRole).toString());
 				element.appendChild(childElement);
 			}
 		}

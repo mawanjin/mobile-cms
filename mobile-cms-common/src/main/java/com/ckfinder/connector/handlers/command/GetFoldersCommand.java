@@ -11,19 +11,18 @@
  */
 package com.ckfinder.connector.handlers.command;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import org.w3c.dom.Element;
-
 import com.ckfinder.connector.configuration.Constants;
 import com.ckfinder.connector.data.XmlAttribute;
 import com.ckfinder.connector.data.XmlElementData;
 import com.ckfinder.connector.errors.ConnectorException;
 import com.ckfinder.connector.utils.AccessControlUtil;
 import com.ckfinder.connector.utils.FileUtils;
+import org.w3c.dom.Element;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Class to handle

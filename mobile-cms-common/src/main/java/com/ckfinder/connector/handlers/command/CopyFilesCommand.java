@@ -11,22 +11,20 @@
  */
 package com.ckfinder.connector.handlers.command;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.w3c.dom.Element;
-
 import com.ckfinder.connector.configuration.Constants;
 import com.ckfinder.connector.configuration.IConfiguration;
 import com.ckfinder.connector.data.FilePostParam;
 import com.ckfinder.connector.errors.ConnectorException;
 import com.ckfinder.connector.utils.AccessControlUtil;
 import com.ckfinder.connector.utils.FileUtils;
+import org.w3c.dom.Element;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Class to handle
@@ -116,7 +114,7 @@ public class CopyFilesCommand extends XMLCommand implements IPostCommand {
 				return Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_REQUEST;
 			}
 			if (FileUtils.checkFileExtension(file.getName(),
-					this.configuration.getTypes().get(this.type)) == 1) {
+                    this.configuration.getTypes().get(this.type)) == 1) {
 				creator.appendErrorNodeChild(
 						Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_EXTENSION,
 						file.getName(), file.getFolder(), file.getType());
@@ -126,7 +124,7 @@ public class CopyFilesCommand extends XMLCommand implements IPostCommand {
 			//double check extension
 			if (!this.type.equals(file.getType())) {
 				if (FileUtils.checkFileExtension(file.getName(),
-						this.configuration.getTypes().get(file.getType())) == 1) {
+                        this.configuration.getTypes().get(file.getType())) == 1) {
 					creator.appendErrorNodeChild(
 							Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_EXTENSION,
 							file.getName(), file.getFolder(), file.getType());
@@ -203,7 +201,7 @@ public class CopyFilesCommand extends XMLCommand implements IPostCommand {
 					}
 				} else {
 					if (FileUtils.copyFromSourceToDestFile(sourceFile, destFile,
-							false, configuration)) {
+                            false, configuration)) {
 						this.filesCopied++;
 						copyThumb(file);
 					}
@@ -258,9 +256,9 @@ public class CopyFilesCommand extends XMLCommand implements IPostCommand {
 				// can't be in one if=, becouse when error in
 				// copy file occurs then it will be infinity loop
 				return (FileUtils.copyFromSourceToDestFile(sourceFile,
-						newDestFile,
-						false,
-						configuration));
+                        newDestFile,
+                        false,
+                        configuration));
 			} else {
 				counter++;
 			}
@@ -279,7 +277,7 @@ public class CopyFilesCommand extends XMLCommand implements IPostCommand {
 			throws IOException {
 		return FileUtils.delete(destFile)
 				&& FileUtils.copyFromSourceToDestFile(sourceFile, destFile,
-				false, configuration);
+                false, configuration);
 	}
 
 	/**
@@ -298,7 +296,7 @@ public class CopyFilesCommand extends XMLCommand implements IPostCommand {
 
 		if (sourceThumbFile.isFile() && sourceThumbFile.exists()) {
 			FileUtils.copyFromSourceToDestFile(sourceThumbFile, destThumbFile,
-					false, configuration);
+                    false, configuration);
 		}
 
 	}

@@ -12,6 +12,7 @@
 package com.ckfinder.connector.utils;
 
 import com.ckfinder.connector.configuration.Constants;
+
 import java.util.regex.Pattern;
 
 /**

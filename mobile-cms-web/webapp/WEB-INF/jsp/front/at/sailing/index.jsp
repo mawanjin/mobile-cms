@@ -46,7 +46,7 @@
             if ($("#mort").val() == "") {
                 return;
             }
-            location.href = "${ctxRoot}/front/at/sailing/findPort.do?mort=" + $("#mort").val();
+            location.href = "${ctxRoot}/front/at/sailing/findPort.do?mport=" + $("#mort").val();
         });
         $("#select_three").bind("click", function () {
             if (($("#fight").val() == "" && $("#ship").val() == "")) {

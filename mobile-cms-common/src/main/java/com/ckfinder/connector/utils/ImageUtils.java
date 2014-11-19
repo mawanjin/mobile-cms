@@ -11,24 +11,16 @@
  */
 package com.ckfinder.connector.utils;
 
-import java.awt.Dimension;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Arrays;
-import java.util.List;
-
-import javax.imageio.ImageIO;
-
+import com.ckfinder.connector.configuration.IConfiguration;
+import net.coobird.thumbnailator.Thumbnails;
 import org.apache.commons.fileupload.FileItem;
 
-import com.ckfinder.connector.configuration.IConfiguration;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import net.coobird.thumbnailator.Thumbnails;
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Utils to operate on images.

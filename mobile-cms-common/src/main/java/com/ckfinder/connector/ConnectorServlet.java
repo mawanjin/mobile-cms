@@ -11,15 +11,6 @@
  */
 package com.ckfinder.connector;
 
-import java.io.IOException;
-
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.ckfinder.connector.configuration.Configuration;
 import com.ckfinder.connector.configuration.ConfigurationFactory;
 import com.ckfinder.connector.configuration.Constants;
@@ -27,27 +18,16 @@ import com.ckfinder.connector.configuration.Events.EventTypes;
 import com.ckfinder.connector.configuration.IConfiguration;
 import com.ckfinder.connector.data.BeforeExecuteCommandEventArgs;
 import com.ckfinder.connector.errors.ConnectorException;
-import com.ckfinder.connector.handlers.command.Command;
-import com.ckfinder.connector.handlers.command.CopyFilesCommand;
-import com.ckfinder.connector.handlers.command.CreateFolderCommand;
-import com.ckfinder.connector.handlers.command.DeleteFilesCommand;
-import com.ckfinder.connector.handlers.command.DeleteFolderCommand;
-import com.ckfinder.connector.handlers.command.DownloadFileCommand;
-import com.ckfinder.connector.handlers.command.ErrorCommand;
-import com.ckfinder.connector.handlers.command.FileUploadCommand;
-import com.ckfinder.connector.handlers.command.GetFilesCommand;
-import com.ckfinder.connector.handlers.command.GetFoldersCommand;
-import com.ckfinder.connector.handlers.command.IPostCommand;
-import com.ckfinder.connector.handlers.command.InitCommand;
-import com.ckfinder.connector.handlers.command.LoadCookiesCommand;
-import com.ckfinder.connector.handlers.command.MoveFilesCommand;
-import com.ckfinder.connector.handlers.command.QuickUploadCommand;
-import com.ckfinder.connector.handlers.command.RenameFileCommand;
-import com.ckfinder.connector.handlers.command.RenameFolderCommand;
-import com.ckfinder.connector.handlers.command.ThumbnailCommand;
-import com.ckfinder.connector.handlers.command.XMLCommand;
-import com.ckfinder.connector.handlers.command.XMLErrorCommand;
+import com.ckfinder.connector.handlers.command.*;
 import com.ckfinder.connector.utils.AccessControlUtil;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * Main connector servlet for handling CKFinder requests.
@@ -232,7 +212,7 @@ public class ConnectorServlet extends HttpServlet {
 		try {
 			if (currentCommand != null) {
 				Command command = CommandHandlerEnum.valueOf(
-						currentCommand.toUpperCase()).getCommand();
+                        currentCommand.toUpperCase()).getCommand();
 				if (command instanceof XMLCommand) {
 					CommandHandlerEnum.XMLERROR.execute(request, response, configuration,
 							getServletContext(), e);

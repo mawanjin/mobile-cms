@@ -27,6 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -60,8 +61,12 @@ public class AgentController extends AdminController {
     public void editSection(Long id, Model model) {
 
         TbSectionAgent command = new TbSectionAgent();
-        if (null != id) {
+        Map<String,Object> m=model.asMap();
+        if (null != id ) {
             command= agentSectionService.getById(id);
+        }else if(m.get("id")!=null){
+
+            command= agentSectionService.getById(new Long(m.get("id").toString()));
         }
 
 
@@ -78,8 +83,12 @@ public class AgentController extends AdminController {
         }
         */
         TbAgent command = new TbAgent();
+        Map<String,Object> m=model.asMap();
         if (null != id) {
                 command= agentService.getById(id);
+        }else if(m.get("id")!=null){
+
+            command= agentService.getById(new Long(m.get("id").toString()));
         }
         /*
         model.addAttribute("valueTypes", ValueType.values());
@@ -102,16 +111,40 @@ public class AgentController extends AdminController {
     public String save(TbAgent form, RedirectAttributes model) {
         TbSectionAgent dd=agentSectionService.getById(form.getSectionId());
         form.setSection(dd);
+        try{
         agentService.saveAgent(form);
-        saveSuccess(model, "保存成功");
+        }catch(Exception e){
+            model.addAttribute("id",form.getId());
+            if(e instanceof org.springframework.dao.DataIntegrityViolationException){
+                saveError(model, "网点名称重名,请重新输入");
+
+                return redirect("/agent/edit.do");
+            }else{
+                saveError(model, "发生系统异常");
+                e.printStackTrace();
+                return redirect("/agent/edit.do");
+            }
+        }
+            saveSuccess(model, "保存成功");
         return redirect("/agent/index.do");
     }
 
     @RequestMapping(value = "saveSection", method = RequestMethod.POST)
     public String saveSection(TbSectionAgent form, RedirectAttributes model) {
-
+        try{
         agentSectionService.saveAgent(form);
-        saveSuccess(model, "保存成功");
+        }catch(Exception e){
+            model.addFlashAttribute("id", form.getId());
+            if(e instanceof org.springframework.dao.DataIntegrityViolationException){
+                saveError(model, "片区名称重名,请重新输入");
+                return redirect("/agent/editSection.do");
+            }else{
+                saveError(model, "发生系统异常");
+                e.printStackTrace();
+                return redirect("/agent/editSection.do");
+            }
+        }
+            saveSuccess(model, "保存成功");
         return redirect("/agent/indexSection.do");
     }
 
@@ -152,6 +185,7 @@ public class AgentController extends AdminController {
                 return redirect("/agent/indexSection.do");
             }else{
                 saveError(model, "发生系统异常");
+                e.printStackTrace();
                 return redirect("/agent/indexSection.do");
             }
         }

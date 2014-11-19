@@ -11,14 +11,13 @@
  */
 package com.ckfinder.connector.handlers.command;
 
-import java.io.File;
-
-import org.w3c.dom.Element;
-
 import com.ckfinder.connector.configuration.Constants;
 import com.ckfinder.connector.errors.ConnectorException;
 import com.ckfinder.connector.utils.AccessControlUtil;
 import com.ckfinder.connector.utils.FileUtils;
+import org.w3c.dom.Element;
+
+import java.io.File;
 
 /**
  * Class to handle
