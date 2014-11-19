@@ -165,9 +165,9 @@ X.loadEditor = function () {
         filebrowserBrowseUrl :  CTX_ROOT+'/static/ckfinder/ckfinder.html',
         filebrowserImageBrowseUrl : CTX_ROOT+'/static/ckfinder/ckfinder.html?type=Images',
         filebrowserFlashBrowseUrl :CTX_ROOT+ '/static/ckfinder/ckfinder.html?type=Flash',
-        filebrowserUploadUrl : CTX_ROOT+'/admin/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files',
-        filebrowserImageUploadUrl :CTX_ROOT+ '/admin/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images',
-        filebrowserFlashUploadUrl :CTX_ROOT+ '/admin/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash'
+        filebrowserUploadUrl : CTX_ROOT+'/static/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files',
+        filebrowserImageUploadUrl :CTX_ROOT+ '/static/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images',
+        filebrowserFlashUploadUrl :CTX_ROOT+ '/static/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash'
 
     });
     $(".rich_simple").ckeditor({
