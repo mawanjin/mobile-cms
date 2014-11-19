@@ -25,7 +25,7 @@ import java.util.Map;
  */
 public class CKFinderSetupCKEditor extends TagSupport {
 
-	private static final String CKFINDER_UPLOAD_URL = "/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=";
+	private static final String CKFINDER_UPLOAD_URL = "static/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=";
 	private static final String CKFINDER_PAGE = "/ckfinder.html";
 	private static final String DEFAULT_IMAGE_TYPE = "Images";
 	private static final String DEFAULT_FLASH_TYPE = "Flash";
