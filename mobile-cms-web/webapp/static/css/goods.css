@@ -6,7 +6,7 @@ body {
     height: 100%;
     background: #ffffff;
     font-family: 'trebuchet MS', 'Lucida sans', Arial;
-    font-size: 12px;
+    font-size: 14px;
     color: #444;
 }
 
@@ -125,6 +125,15 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
 }
 
+.red {
+    color: red;
+    border: solid 1px #b7b7b7;
+    background: #fff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+    background: -moz-linear-gradient(top, #fff, #ededed);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+}
+
 .white:hover {
     background: #ededed;
     background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dcdcdc));
@@ -143,4 +152,28 @@ body {
     -webkit-border-radius: 2em;
     -moz-border-radius: 2em;
     border-radius: 2em;
+}
+
+ul {
+    /*border: 1px dotted #229922;*/
+    padding: 0px 0px 3px 0px;
+}
+
+input.txt{
+    color: #00008B;
+    background-color: #ADD8E6;
+    border: 1px inset #00008B;
+    width: 200px;
+}
+
+.editbox{
+    background: #ffffff;
+    border: 1px solid #000000;
+    color: #003366;
+    cursor: text;
+    font-family: "arial";
+    font-size: 9pt;
+    height: 18px;
+    padding: 1px;
+
 }

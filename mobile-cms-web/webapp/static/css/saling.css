@@ -2,7 +2,7 @@
 
 body {
     width:100%;
-    min-width: 1024px;
+    /*min-width: 1024px;*/
     height: 100%;
     background: #ffffff;
     font-family: 'trebuchet MS', 'Lucida sans', Arial;
@@ -144,3 +144,35 @@ body {
     -moz-border-radius: 2em;
     border-radius: 2em;
 }
+
+.btnTypeOne{
+    background-color: rgba(0, 133, 0, 0.9);
+    background: rgba(0, 133, 0, 0.9);
+    color: #ffffff;
+    height: 50px;
+    line-height: 50px;
+    width: 50%;
+    font-size: 15px;
+}
+
+.btnTypeTwo{
+    background-color: rgba(196, 78, 40, 0.9);
+    background: rgba(196, 78, 40, 0.9);
+    color: #ffffff;
+    height: 50px;
+    line-height: 50px;
+    font-size: 15px;
+    width: 50%;
+}
+
+.btnTypeThree{
+    background-color: rgba(180, 196, 0, 0.6);
+    background: rgba(180, 196, 0, 0.6);
+    color: #ffffff;
+    height: 50px;
+    line-height: 50px;
+    font-size: 15px;
+    width: 50%;
+}
+
+

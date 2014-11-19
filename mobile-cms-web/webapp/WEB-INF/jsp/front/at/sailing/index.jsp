@@ -2,7 +2,7 @@
 <%@include file="/WEB-INF/jsp/common/taglib.jsp" %>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=0.5, minimum-scale=0.2, maximum-scale=2.0, user-scalable=yes"/>
+    <meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
     <title>hello</title>
     <link rel="stylesheet" href="${ctxRoot}/static/css/saling.css"/>
     <script type="text/javascript" src="${ctxRoot}/static/js/mSelect.js"></script>
@@ -58,9 +58,20 @@
 </script>
 <div id="mytable"
      style="width: 100%;height: 100%;background: #ffffff;font-family: 'trebuchet MS', 'Lucida sans', Arial;font-size: 12px;color: #444;">
-    <h2 style="background:#6699cc;color:#ffffff;">船期查询</h2>
+    <h2 style="background:#6699cc;color:#ffffff;padding-top:10px;padding-bottom: 10px;padding-left: 5px;margin-bottom: 10px;">船期查询</h2>
 
-    <div style="margin-bottom: 5px;margin-top:20px;">
+    <!--类型选择-->
+    <div>
+        <div style="margin-bottom: 5px;">
+            <div style="width: 100%;text-align: center;margin-bottom: 10px;"><input type="button" class="btnTypeOne" value="始发港至目的港查询" /></div>
+            <div style="width: 100%;text-align: center;margin-bottom: 10px;"><input type="button" class="btnTypeTwo" value="港口查询" /></div>
+            <div style="width: 100%;text-align: center;"><input type="button" class="btnTypeThree" value="船名,船名航次查询" /></div>
+
+        </div>
+    </div>
+
+
+    <div id="content" style="margin-bottom: 5px;margin-top:20px;display: none;">
         <div style="margin-bottom: 5px;">
             <div ><input type="radio" value="1" id="one"
                         <c:if test="${type == 1}">checked="checked"</c:if> onclick="radio(this)" disabled="disabled" style="margin-right: 10px;">始发港至目的港查询
@@ -103,7 +114,7 @@
             </div>
         </div>
     </div>
-    <table class="bordered">
+    <table  class="bordered" style="display: none;">
         <caption></caption>
         <thead>
         <tr>
