@@ -111,7 +111,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ConnectorServlet</servlet-name>
-        <!--<url-pattern> /static/ckfinder/core/connector/java/connector.java </url-pattern>-->
         <url-pattern> /admin/ckfinder/core/connector/java/connector.java</url-pattern>
     </servlet-mapping>
 

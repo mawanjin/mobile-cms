@@ -29,8 +29,6 @@ public class AgentSectionService {
     @Resource
     private AgentSectionRepository agentSectionRepository;
 
-
-
     public Page<TbSectionAgent> searchSectionAgent(Map<String, Object> searchParams, Pageable pageable) {
         Map<String, SearchFilter> filters = SearchFilter.parse(searchParams);
         Specification<TbSectionAgent> spec = DynamicSpecifications.bySearchFilter(filters.values());

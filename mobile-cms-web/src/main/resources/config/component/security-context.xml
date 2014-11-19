@@ -41,6 +41,7 @@
                 /admin/** = rolesor[admin]
                 /component/security/** = rolesor[admin]
                 /component/basic/** = rolesor[admin]
+                /front/** = anon
             </value>
         </property>
     </bean>

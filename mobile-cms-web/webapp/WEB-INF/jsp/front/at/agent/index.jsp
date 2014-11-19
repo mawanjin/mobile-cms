@@ -45,7 +45,7 @@
                         value="${section.id}">${section.sectionName}</option>
             </c:forEach>
         </select></div>
-    <p><a href="#" id="select" style="width: 99%;margin-bottom: 25px;" class="button white bigrounded">查询</a></p>
+    <div style="width: 100%;text-align: center;"><a href="#" id="select" style="width: 50%;margin-bottom: 25px;" class="button white bigrounded">查询</a></div>
     <table class="bordered">
         <caption></caption>
         <thead>

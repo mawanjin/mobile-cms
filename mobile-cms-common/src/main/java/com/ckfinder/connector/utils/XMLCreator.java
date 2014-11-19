@@ -46,7 +46,7 @@ public class XMLCreator {
 	/**
 	 * Creates document.
 	 *
-	 * @throws ConnectorException if a DocumentBuilder cannot be created which
+	 * @throws com.ckfinder.connector.errors.ConnectorException if a DocumentBuilder cannot be created which
 	 * satisfies the configuration requested.
 	 */
 	public void createDocument() throws ConnectorException {
@@ -81,7 +81,7 @@ public class XMLCreator {
 	/**
 	 *
 	 * @return XML as text
-	 * @throws ConnectorException If an unrecoverable error occurs during the
+	 * @throws com.ckfinder.connector.errors.ConnectorException If an unrecoverable error occurs during the
 	 * course of the transformation or when it is not possible to create a
 	 * Transformer instance.
 	 */
