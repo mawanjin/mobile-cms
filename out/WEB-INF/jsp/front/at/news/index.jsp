@@ -32,22 +32,23 @@
     <input type="hidden" id="page" value="${page_number}"/>
     <input type="hidden" id="end" value="${end}-1"/>
 
-    <h2 style="background:#6699cc;color:#ffffff;padding-top:10px;padding-bottom: 10px;padding-left: 5px;margin-bottom: 10px;">新闻中心</h2>
-    <table style="width: 98%;margin: 0 auto;border:0px solid red;" cellspacing="2">
+    <h2 style="background:#6699cc;color:#ffffff;padding-top:10px;padding-bottom: 10px;margin-bottom: 10px;">新闻中心</h2>
+    <table width="100%" style="margin: 0 auto;border:0px solid red;" cellspacing="0" cellpadding="0">
         <c:forEach var="new1" items="${news}">
-            <tr style="border-bottom: 1px dotted #000000;height: 35px;font-size: 15px;">
-                <td>&nbsp;&nbsp;&nbsp;<a href="${ctxRoot}/front/at/news/findByTbNewsId.do?id=${new1.id}"
+            <tr style="border-bottom: 1px dotted #000000;height: 35px;font-size: 16px;">
+                <td >
+                    &nbsp;<a href="${ctxRoot}/front/at/news/findByTbNewsId.do?id=${new1.id}"
                                          style="color: #444;">
                     <c:choose>
-                    <c:when test="${fn:length(new1.title) > 10}">
-                        <c:out value="${fn:substring(new1.title, 0, 16)}..."/>
-                    </c:when>
-                    <c:otherwise>
-                        <c:out value="${new1.title}"/>
-                    </c:otherwise>
+                        <c:when test="${fn:length(new1.title) > 10}">
+                            <c:out value="${fn:substring(new1.title, 0, 13)}..."/>
+                        </c:when>
+                        <c:otherwise>
+                            <c:out value="${new1.title}"/>
+                        </c:otherwise>
                     </c:choose>
                 </td>
-                <td style="text-align: right;"><fmt:formatDate value="${new1.operTime}"
+                <td width="75px;" style="text-align: right;font-size: 12px;"><fmt:formatDate value="${new1.operTime}"
                                                                type="date"/>&nbsp;&nbsp;&nbsp;</td>
             </tr>
         </c:forEach>

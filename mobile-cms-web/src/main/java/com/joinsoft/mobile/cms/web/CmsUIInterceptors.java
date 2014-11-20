@@ -20,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.net.URLEncoder;
 
 /**
  * xingsen@join-cn.com
@@ -42,6 +41,9 @@ public class CmsUIInterceptors extends UIInterceptors {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
+        try{
+
+            if(securityService==null)return true;
         String openid = request.getParameter("openId");
         String time = request.getParameter("time");
         if (!StringUtils.isEmpty(openid) && !StringUtils.isEmpty(time)) {
@@ -70,7 +72,7 @@ public class CmsUIInterceptors extends UIInterceptors {
 //                return false;
 //            }
 
-            if (securityService.getLoginUser() != null) {
+            if (securityService!=null&&securityService.getLoginUser() != null) {
                 //用户已经登录则执行正常逻辑
                 return true;
             }
@@ -95,6 +97,8 @@ public class CmsUIInterceptors extends UIInterceptors {
 //                }
 //               /
             }
+        }   }catch (Exception e){
+            e.printStackTrace();
         }
         return true;
     }
@@ -103,6 +107,7 @@ public class CmsUIInterceptors extends UIInterceptors {
     public void postHandle0(HttpServletRequest request, HttpServletResponse response, Object handler,
                             ModelAndView modelAndView) throws Exception {
         String requestUri = request.getServletPath();
+        if(securityService==null)return;
         User loginUser = securityService.getLoginUser();
         if (loginUser != null) {
             request.setAttribute("siderNavList", securityService.buildMenu(requestUri));
