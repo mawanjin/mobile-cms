@@ -5,7 +5,6 @@ import com.joinsoft.framework.util.Json;
 import com.joinsoft.mobile.cms.service.SailingDateService;
 import com.joinsoft.mobile.cms.web.front.FrontController;
 import com.joinsoft.mobile.cms.web.front.vo.SailingVo;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,7 +60,7 @@ public class SailingDateController extends AccessTokenController {
     @RequestMapping("findPort")
     public String findPort(Model model, String mort) {
         String json = dateService.findPort(mort);
-        if (null != json && !json.equals("[]")) {
+        if (null != json&&!json.equals("") && !json.equals("[]")) {
             JsonNode jsonNode = Json.parse(json);
             List<SailingVo> sailings = new ArrayList<SailingVo>();
             for (int i = 0; i < jsonNode.size(); i++) {

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="${ctxRoot}/static/css/goods.css"/>
 
 </head>
-<body>
+<body style="background-color: #ffffff;">
 <script>
     $(function () {
         $("#select").bind("click", function () {

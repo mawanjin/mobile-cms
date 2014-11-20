@@ -33,7 +33,7 @@
 
 </script>
 <div id="mytable">
-    <h2 style="background:#6699cc;color:#ffffff;margin-bottom: 25px;">网点查询</h2>
+    <h2 style="background:#6699cc;color:#ffffff;margin-bottom: 25px;padding-top:10px;padding-bottom: 10px;padding-left: 5px;">网点查询</h2>
 
     <div style="width: 100%;text-align: center;margin-bottom: 25px;">
         <span>片区:</span>&nbsp;&nbsp;&nbsp;
