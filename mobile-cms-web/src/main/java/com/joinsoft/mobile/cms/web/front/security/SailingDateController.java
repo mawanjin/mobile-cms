@@ -35,6 +35,9 @@ public class SailingDateController extends AccessTokenController {
      */
     @RequestMapping("findPortScope")
     public String findPortScope(Model model, String sport, String port) {
+        try{
+
+
         String json = dateService.findPortScope(sport, port);
         if (null != json && !json.equals("[]")) {
             JsonNode jsonNode = Json.parse(json);
@@ -44,6 +47,9 @@ public class SailingDateController extends AccessTokenController {
             }
             model.addAttribute("sailings", sailings);
         } else {
+            model.addAttribute("hint", "该条件查询无记录");
+        }
+        }catch(Exception e){
             model.addAttribute("hint", "该条件查询无记录");
         }
         model.addAttribute("type", 1);
