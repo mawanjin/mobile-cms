@@ -3,8 +3,8 @@
 <html>
 
 <head>
-    <meta name="viewport"
-          content="width=device-width,target-densitydpi=high-dpi,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=false"/>
+    <%--<meta name="viewport"--%>
+          <%--content="width=device-width,target-densitydpi=high-dpi,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=false"/>--%>
     <title></title>
     <link rel="stylesheet" href="${ctxRoot}/static/css/goods.css"/>
 

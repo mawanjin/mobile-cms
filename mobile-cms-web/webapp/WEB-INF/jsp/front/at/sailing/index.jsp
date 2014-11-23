@@ -2,7 +2,7 @@
 <%@include file="/WEB-INF/jsp/common/taglib.jsp" %>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <%--<meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>--%>
     <title>hello</title>
     <link rel="stylesheet" href="${ctxRoot}/static/css/saling.css"/>
     <script type="text/javascript" src="${ctxRoot}/static/js/mSelect.js"></script>
@@ -148,8 +148,10 @@
             <div style="margin-left: 50px;">
                 始发港:&nbsp;<input id="sport" type="text" value="${sport}"
                                  style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <br/>
                 目的港:&nbsp;<input id="port" type="text" value="${port}"
                                  style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">
+                <br/>
                 <a href="#" id="select_one" style="width: 80px;"
                    class="button white bigrounded">查询</a>
                 <br clear="all"/>
@@ -174,9 +176,11 @@
             <div style="margin-left: 62px;">
                 航次:<input id="fight" type="text" value="${fight}"
                           style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <br>
                 船名:<input id="ship" type="text" value="${ship}"
                           style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">
                 </select>
+                <br>
                 <a href="#" id="select_three" style="width: 80px;"
                    class="button white bigrounded">查询</a>
                 <br clear="all"/>
