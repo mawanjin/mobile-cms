@@ -23,6 +23,7 @@
 
 
 <div class="page bgray">
+    <div><img src="${ctxRoot}/static/front/images/logo.png"/> </div>
     <sitemesh:body/>
     <div class="exc_inforbox">
         <img src="${ctxRoot}/static/front/images/btn_close.png" class="btn_quit"/>

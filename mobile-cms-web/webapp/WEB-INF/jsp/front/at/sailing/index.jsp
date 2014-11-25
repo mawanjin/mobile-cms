@@ -146,14 +146,28 @@
                          <c:if test="${type == 1}">checked="checked"</c:if> onclick="radio(this)" disabled="disabled" style="margin-right: 10px;margin-top: 5px;margin-bottom: 5px;">始发港至目的港查询
             </div>
             <div style="margin-left: 50px;">
-                始发港:&nbsp;<input id="sport" type="text" value="${sport}"
-                                 style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <br/>
-                目的港:&nbsp;<input id="port" type="text" value="${port}"
-                                 style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">
-                <br/>
-                <a href="#" id="select_one" style="width: 80px;"
-                   class="button white bigrounded">查询</a>
+                始发港:&nbsp;
+                <%--<input id="sport" type="text" value="${sport}"--%>
+                                 <%--style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--%>
+
+                <select id="sport" style="width: 190px;" >
+                    <c:forEach var="agent" items="${agents}">
+                        <option value="${agent.agentName}">${agent.agentName}</option>
+                    </c:forEach>
+                </select>
+
+                <br><br>
+                目的港:&nbsp;
+                <%--<input id="port" type="text" value="${port}"--%>
+                                 <%--style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">--%>
+                <select id="port" style="width: 190px;" >
+                    <c:forEach var="agent" items="${agents}">
+                        <option value="${agent.agentName}">${agent.agentName}</option>
+                    </c:forEach>
+                </select>
+                <br>          <br>
+                <div  id="select_one" style="width: 80px;"
+                   class="button white bigrounded">查询</div>
                 <br clear="all"/>
             </div>
         </div>
@@ -162,10 +176,17 @@
                         <c:if test="${type eq 2}">checked="checked" </c:if> onclick="radio(this)" disabled="disabled" style="margin-right: 10px;margin-top: 5px;margin-bottom: 5px;">港口查询
             </div>
             <div style="margin-left: 62px;">
-                港口:&nbsp;<input id="mort" type="text" value="${mort}"
-                                style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">
-                <a href="#" id="select_two" style="width: 80px;"
-                   class="button white bigrounded">查询</a>
+                港口:&nbsp;
+                <%--<input id="mort" type="text" value="${mort}"--%>
+                                <%--style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">--%>
+                <select id="mort" style="width: 190px;" >
+                <c:forEach var="agent" items="${agents}">
+                    <option value="${agent.agentName}">${agent.agentName}</option>
+                </c:forEach>
+                </select>
+                <br><br>
+                <div  id="select_two" style="width: 80px;"
+                   class="button white bigrounded">查询</div>
                 <br clear="all"/>
             </div>
         </div>
@@ -174,20 +195,20 @@
                         <c:if test="${type eq 3}">checked="checked" </c:if> onclick="radio(this)" disabled="disabled" style="margin-right: 10px;">船名,航次查询
             </div>
             <div style="margin-left: 62px;">
-                航次:<input id="fight" type="text" value="${fight}"
+                航名:<input id="ship" type="text" value="${fight}"
                           style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <br>
-                船名:<input id="ship" type="text" value="${ship}"
+                船次:<input id="fight" type="text" value="${ship}"
                           style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">
                 </select>
                 <br>
-                <a href="#" id="select_three" style="width: 80px;"
-                   class="button white bigrounded">查询</a>
+                <div  id="select_three" style="width: 80px;"
+                   class="button white bigrounded">查询</div>
                 <br clear="all"/>
             </div>
         </div>
     </div>
-
+    <br>
     <div id="result">
     <c:if test="${not empty hint}">
         <div>未找到符合条件的记录</div>
@@ -196,8 +217,8 @@
 
     <c:forEach var="sailing" items="${sailings}">
         <ul>
-            <li class="red">航次:&nbsp;&nbsp;${sailing.fight}</li>
             <li class="row">船名:&nbsp;&nbsp;${sailing.ship}</li>
+            <li class="red">航次:&nbsp;&nbsp;${sailing.fight}</li>
             <li class="row">始发港:&nbsp;&nbsp;${sailing.start}</li>
             <li class="row">离港时间:&nbsp;&nbsp;${sailing.stime}</li>
             <li class="row">目的港:&nbsp;&nbsp;${sailing.end}</li>
