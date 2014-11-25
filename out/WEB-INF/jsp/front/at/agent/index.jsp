@@ -10,7 +10,7 @@
 <script>
     $(function () {
         $("#select").bind("click", function () {
-            location.href = "${ctx}/agent/findByTbSectionAgentId.do?id=" + $("#section").val();
+            window.location.href = "${ctx}/agent/findByTbSectionAgentId.do?id=" + $("#section").val();
         });
     });
     var mySelect = new mSelect('mySelect', '${ctxRoot}/static/css/mSelect.css');
@@ -37,7 +37,7 @@
 
     <div style="width: 100%;text-align: center;margin-bottom: 25px;">
         <span>片区:</span>&nbsp;&nbsp;&nbsp;
-        <select id="section" mSty="blueCircle">
+        <select id="section" style="width: 120px;">
             <option value="0">请选择片区</option>
             <c:forEach var="section" items="${sections}">
                 <option
@@ -45,7 +45,7 @@
                         value="${section.id}">${section.sectionName}</option>
             </c:forEach>
         </select></div>
-    <div style="width: 100%;text-align: center;"><a href="#" id="select" style="width: 50%;margin-bottom: 25px;" class="button white bigrounded">查询</a></div>
+    <div style="width: 100%;text-align: center;"><div id="select" style="width: 50%;margin-bottom: 25px;" class="button white bigrounded">查询</div></div>
     <table class="bordered">
         <caption></caption>
         <thead>
@@ -54,7 +54,7 @@
             <th scope="col">负责人</th>
             <th scope="col">电话</th>
             <th scope="col">传真</th>
-            <th scope="col">邮编</th>
+            <%--<th scope="col">邮编</th>--%>
             <th scope="col">地址</th>
         </tr>
         </thead>
@@ -65,7 +65,7 @@
                 <td class="row">${agent.header}</td>
                 <td class="row">${agent.telephone}</td>
                 <td class="row">${agent.fax}</td>
-                <td class="row">${agent.post}</td>
+                <%--<td class="row">${agent.post}</td>--%>
                 <td class="row">${agent.addr}</td>
             </tr>
         </c:forEach>
