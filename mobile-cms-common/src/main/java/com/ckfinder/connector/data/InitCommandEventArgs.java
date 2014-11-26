@@ -11,8 +11,9 @@
  */
 package com.ckfinder.connector.data;
 
-import com.ckfinder.connector.utils.XMLCreator;
 import org.w3c.dom.Element;
+
+import com.ckfinder.connector.utils.XMLCreator;
 
 /**
  * Event data for {@link com.ckfinder.connector.configuration.Events.EventTypes#InitCommand}
@@ -20,34 +21,34 @@ import org.w3c.dom.Element;
  */
 public class InitCommandEventArgs extends EventArgs {
 
-	private XMLCreator xml;
-	private Element rootElement;
+    private XMLCreator xml;
+    private Element rootElement;
 
-	/**
-	 * @return the rootElement
-	 */
-	public final Element getRootElement() {
-		return rootElement;
-	}
+    /**
+     * @return the rootElement
+     */
+    public final Element getRootElement() {
+        return rootElement;
+    }
 
-	/**
-	 * @param rootElement the rootElement to set
-	 */
-	public final void setRootElement(final Element rootElement) {
-		this.rootElement = rootElement;
-	}
+    /**
+     * @param rootElement the rootElement to set
+     */
+    public final void setRootElement(final Element rootElement) {
+        this.rootElement = rootElement;
+    }
 
-	/**
-	 * @return the xml
-	 */
-	public final XMLCreator getXml() {
-		return xml;
-	}
+    /**
+     * @return the xml
+     */
+    public final XMLCreator getXml() {
+        return xml;
+    }
 
-	/**
-	 * @param xml the XML to set
-	 */
-	public final void setXml(final XMLCreator xml) {
-		this.xml = xml;
-	}
+    /**
+     * @param xml the XML to set
+     */
+    public final void setXml(final XMLCreator xml) {
+        this.xml = xml;
+    }
 }

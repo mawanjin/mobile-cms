@@ -20,49 +20,49 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class ConfigurationPathBuilder extends DefaultPathBuilder {
 
-	/**
-	 * Gets configuration value of baseUrl. When config value is not set, then
-	 * return default value.
-	 *
-	 * @param request request
-	 * @return default baseDir value
-	 */
-	@Override
-	public String getBaseUrl(final HttpServletRequest request) {
-		String baseURL = null;
-		try {
-			IConfiguration conf = ConfigurationFactory.getInstace().getConfiguration();
-			baseURL = conf.getBaseURL();
-		} catch (Exception e) {
-			baseURL = null;
-		}
-		if (baseURL == null || baseURL.equals("")) {
-			baseURL = super.getBaseUrl(request);
-		}
+    /**
+     * Gets configuration value of baseUrl. When config value is not set, then
+     * return default value.
+     *
+     * @param request request
+     * @return default baseDir value
+     */
+    @Override
+    public String getBaseUrl(final HttpServletRequest request) {
+        String baseURL = null;
+        try {
+            IConfiguration conf = ConfigurationFactory.getInstace().getConfiguration();
+            baseURL = conf.getBaseURL();
+        } catch (Exception e) {
+            baseURL = null;
+        }
+        if (baseURL == null || baseURL.equals("")) {
+            baseURL = super.getBaseUrl(request);
+        }
 
-		return PathUtils.addSlashToBeginning(PathUtils.addSlashToEnd(baseURL));
-	}
+        return PathUtils.addSlashToBeginning(PathUtils.addSlashToEnd(baseURL));
+    }
 
-	/**
-	 * Gets configuration value of baseDir. When config value is not set, then
-	 * return default value.
-	 *
-	 * @param request request
-	 * @return default baseDir value
-	 */
-	@Override
-	public String getBaseDir(final HttpServletRequest request) {
-		String baseDir = null;
-		try {
-			IConfiguration conf = ConfigurationFactory.getInstace().getConfiguration();
-			baseDir = conf.getBaseDir();
-		} catch (Exception e) {
-			baseDir = null;
-		}
-		if (baseDir == null || baseDir.equals("")) {
-			return super.getBaseDir(request);
-		} else {
-			return baseDir;
-		}
-	}
+    /**
+     * Gets configuration value of baseDir. When config value is not set, then
+     * return default value.
+     *
+     * @param request request
+     * @return default baseDir value
+     */
+    @Override
+    public String getBaseDir(final HttpServletRequest request) {
+        String baseDir = null;
+        try {
+            IConfiguration conf = ConfigurationFactory.getInstace().getConfiguration();
+            baseDir = conf.getBaseDir();
+        } catch (Exception e) {
+            baseDir = null;
+        }
+        if (baseDir == null || baseDir.equals("")) {
+            return super.getBaseDir(request);
+        } else {
+            return baseDir;
+        }
+    }
 }

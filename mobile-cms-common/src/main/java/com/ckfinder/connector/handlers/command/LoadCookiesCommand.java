@@ -28,86 +28,86 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class LoadCookiesCommand extends XMLCommand implements IPostCommand {
 
-	/**
-	 * list of cookies
-	 */
-	private Cookie[] cookies;
-	/**
-	 * Session cookie name
-	 */
-	private String sessionCookieName;
-	/**
-	 * Session path parameter name
-	 */
-	private String sessionPathParamName;
+    /**
+     * list of cookies
+     */
+    private Cookie[] cookies;
+    /**
+     * Session cookie name
+     */
+    private String sessionCookieName;
+    /**
+     * Session path parameter name
+     */
+    private String sessionPathParamName;
 
-	/**
-	 * gets data to XML response.
-	 */
-	protected int getDataForXml() {
+    /**
+     * gets data to XML response.
+     */
+    protected int getDataForXml() {
 
-		if (!AccessControlUtil.getInstance(configuration).checkFolderACL(
-				this.type, this.currentFolder, this.userRole,
-				AccessControlUtil.CKFINDER_CONNECTOR_ACL_FILE_VIEW)) {
-			return Constants.Errors.CKFINDER_CONNECTOR_ERROR_UNAUTHORIZED;
-		}
+        if (!AccessControlUtil.getInstance(configuration).checkFolderACL(
+                this.type, this.currentFolder, this.userRole,
+                AccessControlUtil.CKFINDER_CONNECTOR_ACL_FILE_VIEW)) {
+            return Constants.Errors.CKFINDER_CONNECTOR_ERROR_UNAUTHORIZED;
+        }
 
-		return Constants.Errors.CKFINDER_CONNECTOR_ERROR_NONE;
-	}
+        return Constants.Errors.CKFINDER_CONNECTOR_ERROR_NONE;
+    }
 
-	@Override
-	protected void createXMLChildNodes(final int errorNum, final Element rootElement)
-			throws ConnectorException {
-		if (errorNum == Constants.Errors.CKFINDER_CONNECTOR_ERROR_NONE) {
-			createCookiesData(rootElement);
-		}
-	}
+    @Override
+    protected void createXMLChildNodes(final int errorNum, final Element rootElement)
+            throws ConnectorException {
+        if (errorNum == Constants.Errors.CKFINDER_CONNECTOR_ERROR_NONE) {
+            createCookiesData(rootElement);
+        }
+    }
 
-	/**
-	 * Init params for LoadCookies command.
-	 *
-	 * @param request request
-	 * @param configuration connector configuration
-	 * @param params execute additional params.
-	 * @throws com.ckfinder.connector.errors.ConnectorException when error occurs.
-	 */
-	@Override
-	public void initParams(final HttpServletRequest request,
-			final IConfiguration configuration, final Object... params)
-			throws ConnectorException {
+    /**
+     * Init params for LoadCookies command.
+     *
+     * @param request request
+     * @param configuration connector configuration
+     * @param params execute additional params.
+     * @throws com.ckfinder.connector.errors.ConnectorException when error occurs.
+     */
+    @Override
+    public void initParams(final HttpServletRequest request,
+                           final IConfiguration configuration, final Object... params)
+            throws ConnectorException {
 
-		super.initParams(request, configuration, params);
-		this.cookies = request.getCookies();
-		this.sessionCookieName = ((String) request.getAttribute("session.cookie.name"));
-		this.sessionPathParamName = ((String) request.getAttribute("session.parameter.name"));
-	}
+        super.initParams(request, configuration, params);
+        this.cookies = request.getCookies();
+        this.sessionCookieName = ((String) request.getAttribute("session.cookie.name"));
+        this.sessionPathParamName = ((String) request.getAttribute("session.parameter.name"));
+    }
 
-	/**
-	 * creates Cookies data node in XML response.
-	 *
-	 * @param rootElement root element from XML.
-	 */
-	private void createCookiesData(final Element rootElement) {
-		Element element = creator.getDocument().createElement("Cookies");
+    /**
+     * creates Cookies data node in XML response.
+     *
+     * @param rootElement root element from XML.
+     */
+    private void createCookiesData(final Element rootElement) {
+        Element element = creator.getDocument().createElement("Cookies");
 
-		if (this.sessionCookieName != null) {
-			element.setAttribute("sessionCookieName", this.sessionCookieName);
-		}
+        if (this.sessionCookieName != null) {
+            element.setAttribute("sessionCookieName", this.sessionCookieName);
+        }
 
-		if (this.sessionPathParamName != null) {
-			element.setAttribute("sessionParameterName", this.sessionPathParamName);
-		}
+        if (this.sessionPathParamName != null) {
+            element.setAttribute("sessionParameterName", this.sessionPathParamName);
+        }
 
-		for (int i = 0; i < this.cookies.length; i++) {
-			if (!cookies[i].getName().startsWith("CKFinder_")) {
-				XmlElementData elementData = new XmlElementData("Cookie");
-				XmlAttribute attribute = new XmlAttribute("name", cookies[i].getName());
-				elementData.getAttributes().add(attribute);
-				attribute = new XmlAttribute("value", cookies[i].getValue());
-				elementData.getAttributes().add(attribute);
-				elementData.addToDocument(this.creator.getDocument(), element);
-			}
-		}
-		rootElement.appendChild(element);
-	}
+        for (int i = 0; i < this.cookies.length; i++) {
+            if (!cookies[i].getName().startsWith("CKFinder_")) {
+                XmlElementData elementData = new XmlElementData("Cookie");
+                XmlAttribute attribute = new XmlAttribute("name", cookies[i].getName());
+                elementData.getAttributes().add(attribute);
+                attribute = new XmlAttribute("value", cookies[i].getValue());
+                elementData.getAttributes().add(attribute);
+                elementData.addToDocument(this.creator.getDocument(), element);
+            }
+        }
+        rootElement.appendChild(element);
+    }
 }

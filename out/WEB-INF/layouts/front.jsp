@@ -1,11 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/WEB-INF/jsp/common/taglib.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" manifest="movie.appcache">
+<%--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">--%>
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport"
-          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
+          content="user-scalable=no"/>
     <title></title>
     <link rel="stylesheet" href="${ctxRoot}/static/front/css/style.css?r=<%=System.currentTimeMillis()%>">
     <script src='${ctxRoot}/static/framework/js/jquery-1.10.2.min.js'></script>
@@ -21,6 +23,7 @@
 
 
 <div class="page bgray">
+    <div><img src="${ctxRoot}/static/front/images/logo.png"/> </div>
     <sitemesh:body/>
     <div class="exc_inforbox">
         <img src="${ctxRoot}/static/front/images/btn_close.png" class="btn_quit"/>

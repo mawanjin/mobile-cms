@@ -147,10 +147,10 @@ X.showDialog = function (title, content, type) {
         '<div class="modal-body" style="font-size:14px;">{2}</div>{3}</div></div></div>';
     if (type.trim() == "wait") {
         dialog_html = dialog_html.format("", title,
-            '<i class="icon-spinner icon-spin green bigger-125"></i>' + content, "");
+                '<i class="icon-spinner icon-spin green bigger-125"></i>' + content, "");
     } else if (type.trim() == "error") {
         dialog_html = dialog_html.format(dialog_header, title,
-            '<i class="icon-bolt red bigger-125"></i>&nbsp;&nbsp;' + content, "");
+                '<i class="icon-bolt red bigger-125"></i>&nbsp;&nbsp;' + content, "");
     } else {
         var footer = '<div class="modal-footer">' +
             '<button type="button" class="btn btn-primary" onclick="window.location.reload();">确定</button></div>';
@@ -165,9 +165,9 @@ X.loadEditor = function () {
         filebrowserBrowseUrl :  CTX_ROOT+'/static/ckfinder/ckfinder.html',
         filebrowserImageBrowseUrl : CTX_ROOT+'/static/ckfinder/ckfinder.html?type=Images',
         filebrowserFlashBrowseUrl :CTX_ROOT+ '/static/ckfinder/ckfinder.html?type=Flash',
-        filebrowserUploadUrl : CTX_ROOT+'/static/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files',
-        filebrowserImageUploadUrl :CTX_ROOT+ '/static/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images',
-        filebrowserFlashUploadUrl :CTX_ROOT+ '/static/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash'
+        filebrowserUploadUrl : CTX_ROOT+'/admin/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files',
+        filebrowserImageUploadUrl :CTX_ROOT+ '/admin/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images',
+        filebrowserFlashUploadUrl :CTX_ROOT+ '/admin/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash'
 
     });
     $(".rich_simple").ckeditor({

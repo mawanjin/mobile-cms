@@ -29,8 +29,8 @@
     <root level="INFO">
         <!-- 设置接收所有输出的通道 -->
         <appender-ref ref="console"/>
-        <!--
+
         <appender-ref ref="file"/>
-       -->
+
     </root>
 </configuration>

@@ -30,110 +30,110 @@ import java.util.regex.Pattern;
  */
 public class ErrorCommand extends Command {
 
-	private ConnectorException e;
-	private HttpServletResponse response;
+    private ConnectorException e;
+    private HttpServletResponse response;
 
-	@Override
-	public void execute(final OutputStream out) throws ConnectorException {
-		try {
-			response.setHeader("X-CKFinder-Error", String.valueOf(e.getErrorCode()));
-			switch (e.getErrorCode()) {
-				case Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_REQUEST:
-				case Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_NAME:
-				case Constants.Errors.CKFINDER_CONNECTOR_ERROR_THUMBNAILS_DISABLED:
-				case Constants.Errors.CKFINDER_CONNECTOR_ERROR_UNAUTHORIZED:
-					response.sendError(HttpServletResponse.SC_FORBIDDEN);
-					break;
-				case Constants.Errors.CKFINDER_CONNECTOR_ERROR_ACCESS_DENIED:
-					response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-					break;
-				default:
-					response.sendError(HttpServletResponse.SC_NOT_FOUND);
-					break;
-			}
+    @Override
+    public void execute(final OutputStream out) throws ConnectorException {
+        try {
+            response.setHeader("X-CKFinder-Error", String.valueOf(e.getErrorCode()));
+            switch (e.getErrorCode()) {
+                case Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_REQUEST:
+                case Constants.Errors.CKFINDER_CONNECTOR_ERROR_INVALID_NAME:
+                case Constants.Errors.CKFINDER_CONNECTOR_ERROR_THUMBNAILS_DISABLED:
+                case Constants.Errors.CKFINDER_CONNECTOR_ERROR_UNAUTHORIZED:
+                    response.sendError(HttpServletResponse.SC_FORBIDDEN);
+                    break;
+                case Constants.Errors.CKFINDER_CONNECTOR_ERROR_ACCESS_DENIED:
+                    response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                    break;
+                default:
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                    break;
+            }
 
-		} catch (IOException e) {
-			throw new ConnectorException(e);
-		}
-	}
+        } catch (IOException e) {
+            throw new ConnectorException(e);
+        }
+    }
 
-	@Override
-	public void setResponseHeader(final HttpServletResponse response,
-			final ServletContext sc) {
-		response.reset();
-		this.response = response;
+    @Override
+    public void setResponseHeader(final HttpServletResponse response,
+                                  final ServletContext sc) {
+        response.reset();
+        this.response = response;
 
-	}
+    }
 
-	@Override
-	public void initParams(final HttpServletRequest request,
-			final IConfiguration configuration, final Object... params)
-			throws ConnectorException {
-		super.initParams(request, configuration, params);
-		e = (ConnectorException) params[0];
-	}
+    @Override
+    public void initParams(final HttpServletRequest request,
+                           final IConfiguration configuration, final Object... params)
+            throws ConnectorException {
+        super.initParams(request, configuration, params);
+        e = (ConnectorException) params[0];
+    }
 
-	/**
-	 * for error command there should be no exection throw becouse there is no
-	 * more excetpion handlers.
-	 *
-	 * @param reqParam request param
-	 * @return true if validation passed
-	 * @throws com.ckfinder.connector.errors.ConnectorException it should never throw an exception
-	 */
-	@Override
-	protected boolean checkParam(final String reqParam) throws ConnectorException {
-		if (reqParam == null || reqParam.equals("")) {
-			return true;
-		}
-		if (Pattern.compile(Constants.INVALID_PATH_REGEX).matcher(reqParam).find()) {
-			return false;
-		}
-		return true;
-	}
+    /**
+     * for error command there should be no exection throw becouse there is no
+     * more excetpion handlers.
+     *
+     * @param reqParam request param
+     * @return true if validation passed
+     * @throws com.ckfinder.connector.errors.ConnectorException it should never throw an exception
+     */
+    @Override
+    protected boolean checkParam(final String reqParam) throws ConnectorException {
+        if (reqParam == null || reqParam.equals("")) {
+            return true;
+        }
+        if (Pattern.compile(Constants.INVALID_PATH_REGEX).matcher(reqParam).find()) {
+            return false;
+        }
+        return true;
+    }
 
-	@Override
-	protected boolean checkHidden()
-			throws ConnectorException {
-		if (FileUtils.checkIfDirIsHidden(this.currentFolder, configuration)) {
-			this.e = new ConnectorException(
-					Constants.Errors.CKFINDER_CONNECTOR_ERROR_CONNECTOR_DISABLED);
-			return true;
-		}
-		return false;
-	}
+    @Override
+    protected boolean checkHidden()
+            throws ConnectorException {
+        if (FileUtils.checkIfDirIsHidden(this.currentFolder, configuration)) {
+            this.e = new ConnectorException(
+                    Constants.Errors.CKFINDER_CONNECTOR_ERROR_CONNECTOR_DISABLED);
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	protected boolean checkConnector(final HttpServletRequest request)
-			throws ConnectorException {
-		if (!configuration.enabled() || !configuration.checkAuthentication(request)) {
-			this.e = new ConnectorException(
-					Constants.Errors.CKFINDER_CONNECTOR_ERROR_CONNECTOR_DISABLED);
-			return false;
-		}
-		return true;
-	}
+    @Override
+    protected boolean checkConnector(final HttpServletRequest request)
+            throws ConnectorException {
+        if (!configuration.enabled() || !configuration.checkAuthentication(request)) {
+            this.e = new ConnectorException(
+                    Constants.Errors.CKFINDER_CONNECTOR_ERROR_CONNECTOR_DISABLED);
+            return false;
+        }
+        return true;
+    }
 
-	@Override
-	protected boolean checkIfCurrFolderExists(final HttpServletRequest request)
-			throws ConnectorException {
-		String tmpType = getParameter(request, "type");
-		File currDir = new File(configuration.getTypes().get(tmpType).getPath()
-				+ this.currentFolder);
-		if (currDir.exists() && currDir.isDirectory()) {
-			return true;
-		} else {
-			this.e = new ConnectorException(
-					Constants.Errors.CKFINDER_CONNECTOR_ERROR_FOLDER_NOT_FOUND);
-			return false;
-		}
-	}
+    @Override
+    protected boolean checkIfCurrFolderExists(final HttpServletRequest request)
+            throws ConnectorException {
+        String tmpType = getParameter(request, "type");
+        File currDir = new File(configuration.getTypes().get(tmpType).getPath()
+                + this.currentFolder);
+        if (currDir.exists() && currDir.isDirectory()) {
+            return true;
+        } else {
+            this.e = new ConnectorException(
+                    Constants.Errors.CKFINDER_CONNECTOR_ERROR_FOLDER_NOT_FOUND);
+            return false;
+        }
+    }
 
-	@Override
-	protected void getCurrentFolderParam(final HttpServletRequest request) {
-		String currFolder = getParameter(request, "currentFolder");
-		if (!(currFolder == null || currFolder.equals(""))) {
-			this.currentFolder = PathUtils.addSlashToBeginning(PathUtils.addSlashToEnd(currFolder));
-		}
-	}
+    @Override
+    protected void getCurrentFolderParam(final HttpServletRequest request) {
+        String currFolder = getParameter(request, "currentFolder");
+        if (!(currFolder == null || currFolder.equals(""))) {
+            this.currentFolder = PathUtils.addSlashToBeginning(PathUtils.addSlashToEnd(currFolder));
+        }
+    }
 }

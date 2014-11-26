@@ -27,84 +27,84 @@ import java.util.Map;
  */
 public class Events {
 
-	private Map<EventTypes, List<EventCommandData>> eventHandlers;
+    private Map<EventTypes, List<EventCommandData>> eventHandlers;
 
-	/**
-	 * The list of events.
-	 */
-	public enum EventTypes {
+    /**
+     * The list of events.
+     */
+    public enum EventTypes {
 
-		BeforeExecuteCommand, AfterFileUpload, InitCommand;
-	}
+        BeforeExecuteCommand, AfterFileUpload, InitCommand;
+    }
 
-	/**
-	 * default constructor.
-	 */
-	public Events() {
-		eventHandlers = new HashMap<EventTypes, List<EventCommandData>>();
-		eventHandlers.put(EventTypes.AfterFileUpload, new ArrayList<EventCommandData>());
-		eventHandlers.put(EventTypes.InitCommand, new ArrayList<EventCommandData>());
-		eventHandlers.put(EventTypes.BeforeExecuteCommand,
-				new ArrayList<EventCommandData>());
-	}
+    /**
+     * default constructor.
+     */
+    public Events() {
+        eventHandlers = new HashMap<EventTypes, List<EventCommandData>>();
+        eventHandlers.put(EventTypes.AfterFileUpload, new ArrayList<EventCommandData>());
+        eventHandlers.put(EventTypes.InitCommand, new ArrayList<EventCommandData>());
+        eventHandlers.put(EventTypes.BeforeExecuteCommand,
+                new ArrayList<EventCommandData>());
+    }
 
-	/**
-	 * register events handlers for event.
-	 *
-	 * @param event selected event
-	 * @param eventHandler event class to register
-	 */
-	public void addEventHandler(final EventTypes event,
-			final Class<? extends IEventHandler> eventHandler) {
-		EventCommandData eventCommandData = new EventCommandData(eventHandler);
-		eventHandlers.get(event).add(eventCommandData);
-	}
+    /**
+     * register events handlers for event.
+     *
+     * @param event selected event
+     * @param eventHandler event class to register
+     */
+    public void addEventHandler(final EventTypes event,
+                                final Class<? extends IEventHandler> eventHandler) {
+        EventCommandData eventCommandData = new EventCommandData(eventHandler);
+        eventHandlers.get(event).add(eventCommandData);
+    }
 
-	/**
-	 * register events handlers for event.
-	 *
-	 * @param event selected event
-	 * @param eventHandler event class to register
-	 * @param pluginInfo plugin info
-	 */
-	public void addEventHandler(final EventTypes event,
-			final Class<? extends IEventHandler> eventHandler,
-			final PluginInfo pluginInfo) {
-		EventCommandData eventCommandData = new EventCommandData(eventHandler);
-		eventCommandData.setPluginInfo(pluginInfo);
-		eventHandlers.get(event).add(eventCommandData);
-	}
+    /**
+     * register events handlers for event.
+     *
+     * @param event selected event
+     * @param eventHandler event class to register
+     * @param pluginInfo plugin info
+     */
+    public void addEventHandler(final EventTypes event,
+                                final Class<? extends IEventHandler> eventHandler,
+                                final PluginInfo pluginInfo) {
+        EventCommandData eventCommandData = new EventCommandData(eventHandler);
+        eventCommandData.setPluginInfo(pluginInfo);
+        eventHandlers.get(event).add(eventCommandData);
+    }
 
-	/**
-	 * run event handlers for selected event.
-	 *
-	 * @param eventTyp selected event.
-	 * @param args event execute arguments.
-	 * @param configuration connector configuration
-	 * @return false when end executing command.
-	 * @throws com.ckfinder.connector.errors.ConnectorException when error occurs.
-	 */
-	public boolean run(final EventTypes eventTyp, final EventArgs args,
-			final IConfiguration configuration)
-			throws ConnectorException {
-		for (EventCommandData eventCommandData : eventHandlers.get(eventTyp)) {
-			try {
-				IEventHandler events = null;
-				if (eventCommandData.getPluginInfo() != null) {
-					events = eventCommandData.getEventListener().getConstructor(PluginInfo.class).newInstance(eventCommandData.getPluginInfo());
-				} else {
-					events = eventCommandData.getEventListener().newInstance();
-				}
-				if (!events.runEventHandler(args, configuration)) {
-					return false;
-				}
-			} catch (ConnectorException ex) {
-				throw ex;
-			} catch (Exception e) {
-				throw new ConnectorException(e);
-			}
+    /**
+     * run event handlers for selected event.
+     *
+     * @param eventTyp selected event.
+     * @param args event execute arguments.
+     * @param configuration connector configuration
+     * @return false when end executing command.
+     * @throws com.ckfinder.connector.errors.ConnectorException when error occurs.
+     */
+    public boolean run(final EventTypes eventTyp, final EventArgs args,
+                       final IConfiguration configuration)
+            throws ConnectorException {
+        for (EventCommandData eventCommandData : eventHandlers.get(eventTyp)) {
+            try {
+                IEventHandler events = null;
+                if (eventCommandData.getPluginInfo() != null) {
+                    events = eventCommandData.getEventListener().getConstructor(PluginInfo.class).newInstance(eventCommandData.getPluginInfo());
+                } else {
+                    events = eventCommandData.getEventListener().newInstance();
+                }
+                if (!events.runEventHandler(args, configuration)) {
+                    return false;
+                }
+            } catch (ConnectorException ex) {
+                throw ex;
+            } catch (Exception e) {
+                throw new ConnectorException(e);
+            }
 
-		}
-		return true;
-	}
+        }
+        return true;
+    }
 }
