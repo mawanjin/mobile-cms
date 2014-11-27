@@ -27,6 +27,8 @@
 
 </head>
 <body>
+<div style="padding-left: 20px;"><img src="${ctxRoot}/static/front/images/logo.png" width="300px"/> </div>
+<div><img src="${ctxRoot}/static/front/images/a.jpg" width="100%" height="200px" /></div>
 <div id="mytable"
      style="width: 100%;height: 100%;background: #ffffff;font-family: 'trebuchet MS', 'Lucida sans', Arial;font-size: 12px;color: #444;">
     <input type="hidden" id="page" value="${page_number}"/>
@@ -40,14 +42,14 @@
                                          style="color: #444;">
                     <c:choose>
                     <c:when test="${fn:length(new1.title) > 10}">
-                        <c:out value="${fn:substring(new1.title, 0, 16)}..."/>
+                        <c:out value="${fn:substring(new1.title, 0, 15)}..."/>
                     </c:when>
                     <c:otherwise>
                         <c:out value="${new1.title}"/>
                     </c:otherwise>
                     </c:choose>
                 </td>
-                <td style="text-align: right;"><fmt:formatDate value="${new1.operTime}"
+                <td style="text-align: right;font-size: 10px;"><fmt:formatDate value="${new1.operTime}"
                                                                type="date"/>&nbsp;&nbsp;&nbsp;</td>
             </tr>
         </c:forEach>

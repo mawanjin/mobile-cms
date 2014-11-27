@@ -130,17 +130,18 @@
     </div>
 
 
+
     <!--类型选择-->
     <div id="typeContainer">
         <div style="margin-bottom: 5px;margin-top: 30px;">
             <div id="type1" style="width: 100%;text-align: center;margin-bottom: 10px;"><input type="button" class="btnTypeOne" value="始发港至目的港查询" /></div>
             <div id="type2" style="width: 100%;text-align: center;margin-bottom: 10px;"><input type="button" class="btnTypeTwo" value="港口查询" /></div>
-            <div id="type3" style="width: 100%;text-align: center;"><input type="button" class="btnTypeThree" value="船名,航次查询" /></div>
+            <div id="type3" style="width: 100%;text-align: center;"><input type="button" class="btnTypeThree" value="船名-航次查询" /></div>
         </div>
     </div>
 
 
-    <div id="content" style="margin-bottom: 5px;margin-top:20px;display: none;padding-left: 10px;">
+    <div id="content" style="margin-bottom: 5px;margin-top:40px;display: none;padding-left: 10px;">
         <div id="c1" style="margin-bottom: 5px;">
             <div ><input type="radio" value="1" id="one"
                          <c:if test="${type == 1}">checked="checked"</c:if> onclick="radio(this)" disabled="disabled" style="margin-right: 10px;margin-top: 5px;margin-bottom: 5px;">始发港至目的港查询
@@ -192,7 +193,7 @@
         </div>
         <div id="c3">
             <div><input type="radio" value="3"
-                        <c:if test="${type eq 3}">checked="checked" </c:if> onclick="radio(this)" disabled="disabled" style="margin-right: 10px;">船名,航次查询
+                        <c:if test="${type eq 3}">checked="checked" </c:if> onclick="radio(this)" disabled="disabled" style="margin-right: 10px;">船名-航次查询
             </div>
             <div style="margin-left: 62px;">
                 航名:<input id="ship" type="text" value="${fight}"

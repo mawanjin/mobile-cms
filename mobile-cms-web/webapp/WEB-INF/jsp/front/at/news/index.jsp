@@ -27,6 +27,8 @@
 
 </head>
 <body>
+<div style="padding-left: 20px;"><img src="${ctxRoot}/static/front/images/logo.png" width="300px"/> </div>
+<div><img src="${ctxRoot}/static/front/images/a.jpg" width="100%" height="200px" /></div>
 <div id="mytable"
      style="width: 100%;height: 100%;background: #ffffff;font-family: 'trebuchet MS', 'Lucida sans', Arial;font-size: 12px;color: #444;">
     <input type="hidden" id="page" value="${page_number}"/>

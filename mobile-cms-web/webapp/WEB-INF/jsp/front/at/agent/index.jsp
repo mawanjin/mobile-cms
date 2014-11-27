@@ -7,6 +7,7 @@
     <script type="text/javascript" src="${ctxRoot}/static/js/mSelect.js"></script>
 </head>
 <body>
+
 <script>
     $(function () {
         $("#select").bind("click", function () {
@@ -34,7 +35,7 @@
 </script>
 <div id="mytable">
     <h2 style="background:#6699cc;color:#ffffff;margin-bottom: 25px;padding-top:10px;padding-bottom: 10px;padding-left: 5px;">网点查询</h2>
-
+    <div style="height: 25px;">&nbsp;</div>
     <div style="width: 100%;text-align: center;margin-bottom: 25px;">
         <span>片区:</span>&nbsp;&nbsp;&nbsp;
         <select id="section" style="width: 120px;">
@@ -53,7 +54,7 @@
             <th scope="col">部门</th>
             <th scope="col">负责人</th>
             <th scope="col">电话</th>
-            <th scope="col">传真</th>
+            <%--<th scope="col">传真</th>--%>
             <%--<th scope="col">邮编</th>--%>
             <th scope="col">地址</th>
         </tr>
@@ -64,7 +65,7 @@
                 <td class="row">${agent.agentName}</td>
                 <td class="row">${agent.header}</td>
                 <td class="row">${agent.telephone}</td>
-                <td class="row">${agent.fax}</td>
+                <%--<td class="row">${agent.fax}</td>--%>
                 <%--<td class="row">${agent.post}</td>--%>
                 <td class="row">${agent.addr}</td>
             </tr>
