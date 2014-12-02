@@ -40,7 +40,7 @@ public class TbNewsController extends AccessTokenController {
 
     @RequestMapping("findPage")
     public String findPage(Model model, int page_number) {
-        Page<TbNews> newses = tbNewsService.findByTbNews(0);
+        Page<TbNews> newses = tbNewsService.findByTbNews(page_number);
         model.addAttribute("news", newses.getContent());
         int page = newses.getTotalPages();
         int pages = page > 5 ? 5 : page;

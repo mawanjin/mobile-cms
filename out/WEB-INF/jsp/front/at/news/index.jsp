@@ -42,14 +42,14 @@
                                          style="color: #444;">
                     <c:choose>
                     <c:when test="${fn:length(new1.title) > 10}">
-                        <c:out value="${fn:substring(new1.title, 0, 15)}..."/>
+                        <c:out value="${fn:substring(new1.title, 0, 16)}..."/>
                     </c:when>
                     <c:otherwise>
                         <c:out value="${new1.title}"/>
                     </c:otherwise>
                     </c:choose>
                 </td>
-                <td style="text-align: right;font-size: 10px;"><fmt:formatDate value="${new1.operTime}"
+                <td style="text-align: right;"><fmt:formatDate value="${new1.operTime}"
                                                                type="date"/>&nbsp;&nbsp;&nbsp;</td>
             </tr>
         </c:forEach>

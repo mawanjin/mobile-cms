@@ -105,6 +105,7 @@ public class SailingDateController extends AccessTokenController {
      */
     @RequestMapping("findShips")
     public String findShips(Model model, String fight, String ship) {
+
         String json = dateService.findShips(fight, ship);
         if (null != json && !json.equals("[]")) {
             JsonNode jsonNode = Json.parse(json);
@@ -116,6 +117,7 @@ public class SailingDateController extends AccessTokenController {
         } else {
             model.addAttribute("hint", "该条件查询无记录");
         }
+        model.addAttribute("agents",getAgents());
         model.addAttribute("type", 3);
         model.addAttribute("fight", fight);
         model.addAttribute("ship", ship);
