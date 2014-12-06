@@ -5,13 +5,11 @@ import com.joinsoft.mobile.cms.repository.news.TbNewsRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * Created by Administrator on 14-11-5.
@@ -29,7 +27,7 @@ public class TbNewsService {
 
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
     public Page<TbNews> findByTbNews(int page) {
-        return tbNewsRepository.findAllOnline(new PageRequest(page, 15, Sort.Direction.DESC,"operTime"));
+        return tbNewsRepository.findAllOnline(new PageRequest(page, 7, Sort.Direction.DESC,"operTime"));
     }
 
 }

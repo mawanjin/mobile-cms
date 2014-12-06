@@ -23,6 +23,7 @@
 <div id="mytable">
     <h2 style="background:#6699cc;color:#ffffff;padding-top:10px;padding-bottom: 10px;padding-left: 5px;margin-bottom: 10px;">
         货物跟踪</h2>
+    <div style="height: 25px;">&nbsp;</div>
     <table width="100%" border="0px solid red">
         <tr>
             <td width="25%">&nbsp;</td>

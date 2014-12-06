@@ -130,17 +130,18 @@
     </div>
 
 
+
     <!--类型选择-->
     <div id="typeContainer">
         <div style="margin-bottom: 5px;margin-top: 30px;">
             <div id="type1" style="width: 100%;text-align: center;margin-bottom: 10px;"><input type="button" class="btnTypeOne" value="始发港至目的港查询" /></div>
             <div id="type2" style="width: 100%;text-align: center;margin-bottom: 10px;"><input type="button" class="btnTypeTwo" value="港口查询" /></div>
-            <div id="type3" style="width: 100%;text-align: center;"><input type="button" class="btnTypeThree" value="船名,航次查询" /></div>
+            <div id="type3" style="width: 100%;text-align: center;"><input type="button" class="btnTypeThree" value="船名-航次查询" /></div>
         </div>
     </div>
 
 
-    <div id="content" style="margin-bottom: 5px;margin-top:20px;display: none;padding-left: 10px;">
+    <div id="content" style="margin-bottom: 5px;margin-top:40px;display: none;padding-left: 10px;">
         <div id="c1" style="margin-bottom: 5px;">
             <div ><input type="radio" value="1" id="one"
                          <c:if test="${type == 1}">checked="checked"</c:if> onclick="radio(this)" disabled="disabled" style="margin-right: 10px;margin-top: 5px;margin-bottom: 5px;">始发港至目的港查询
@@ -152,7 +153,8 @@
 
                 <select id="sport" style="width: 190px;" >
                     <c:forEach var="agent" items="${agents}">
-                        <option value="${agent.agentName}">${agent.agentName}</option>
+
+                        <option value="${agent.agentName}" <c:if test="${agent.agentName eq sport}">selected="selected"</c:if>>${agent.agentName}</option>
                     </c:forEach>
                 </select>
 
@@ -162,7 +164,7 @@
                                  <%--style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">--%>
                 <select id="port" style="width: 190px;" >
                     <c:forEach var="agent" items="${agents}">
-                        <option value="${agent.agentName}">${agent.agentName}</option>
+                        <option value="${agent.agentName}" <c:if test="${agent.agentName eq port}">selected="selected"</c:if> >${agent.agentName}</option>
                     </c:forEach>
                 </select>
                 <br>          <br>
@@ -177,11 +179,10 @@
             </div>
             <div style="margin-left: 62px;">
                 港口:&nbsp;
-                <%--<input id="mort" type="text" value="${mort}"--%>
-                                <%--style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">--%>
+
                 <select id="mort" style="width: 190px;" >
                 <c:forEach var="agent" items="${agents}">
-                    <option value="${agent.agentName}">${agent.agentName}</option>
+                    <option value="${agent.agentName}" <c:if test="${agent.agentName eq mport}">selected="selected"</c:if> >${agent.agentName}</option>
                 </c:forEach>
                 </select>
                 <br><br>
@@ -192,13 +193,13 @@
         </div>
         <div id="c3">
             <div><input type="radio" value="3"
-                        <c:if test="${type eq 3}">checked="checked" </c:if> onclick="radio(this)" disabled="disabled" style="margin-right: 10px;">船名,航次查询
+                        <c:if test="${type eq 3}">checked="checked" </c:if> onclick="radio(this)" disabled="disabled" style="margin-right: 10px;">船名-航次查询
             </div>
             <div style="margin-left: 62px;">
-                航名:<input id="ship" type="text" value="${fight}"
+                航名:<input id="ship" type="text" value="${ship}"
                           style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <br>
-                船次:<input id="fight" type="text" value="${ship}"
+                船次:<input id="fight" type="text" value="${fight}"
                           style="width: 190px;border:1px solid #000000;height: 25px;margin-bottom: 10px;">
                 </select>
                 <br>
@@ -217,8 +218,8 @@
 
     <c:forEach var="sailing" items="${sailings}">
         <ul>
-            <li class="row">船名:&nbsp;&nbsp;${sailing.ship}</li>
-            <li class="red">航次:&nbsp;&nbsp;${sailing.fight}</li>
+            <li class="red">船名:&nbsp;&nbsp;${sailing.ship}</li>
+            <li class="row">航次:&nbsp;&nbsp;${sailing.fight}</li>
             <li class="row">始发港:&nbsp;&nbsp;${sailing.start}</li>
             <li class="row">离港时间:&nbsp;&nbsp;${sailing.stime}</li>
             <li class="row">目的港:&nbsp;&nbsp;${sailing.end}</li>
