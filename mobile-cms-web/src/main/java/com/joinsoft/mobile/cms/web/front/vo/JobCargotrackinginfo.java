@@ -1,5 +1,7 @@
 package com.joinsoft.mobile.cms.web.front.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 /**
@@ -19,51 +21,74 @@ public class JobCargotrackinginfo {
     private String 运输条款;
     private Double 运费合计;
     private String 收款单位;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 装箱时间;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 始发日期;
     private String 始发港;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 离港时间;
     private String 一程船名航次;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 抵港时间一;
     private String 中转港一;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 离港时间一;
     private String 二程船名航次;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 抵港时间二;
     private String 中转港二;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 离港时间二;
     private String 三程船名航次;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 抵港时间三;
     private String 中转港三;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 离港时间三;
     private String 四程船名航次;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 抵港时间四;
     private String 中转港四;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 离港时间四;
     private String 五程船名航次;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 抵港时间五;
     private String 中转港五;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 离港时间五;
     private String 六程船名航次;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 抵港时间;
     private String 目的港;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 到达时间;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 送达时间;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 拆箱时间;
     private String 指令情况;
     private String 目前状态;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 目前状态起始时间;
     private String 预期状态;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 预期状态起始时间;
     private String 最新航次;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 航次始发时间;
     private String 航次始发港;
     private String 航次目的港;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 航次到达时间;
     private String 预配船名航次;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 预计开航时间;
     private String 航线类型;
     private String 备注;
     private String 客户单号;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date 码头作业时间;
 
     public String get运单号() {
