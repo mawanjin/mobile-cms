@@ -11,14 +11,13 @@
  */
 package com.ckfinder.connector;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.ckfinder.connector.utils.PathUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
-
-import com.ckfinder.connector.utils.PathUtils;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Source code of
@@ -26,7 +25,7 @@ import com.ckfinder.connector.utils.PathUtils;
  */
 public class CKFinderSetupCKEditor extends TagSupport {
 
-	private static final String CKFINDER_UPLOAD_URL = "/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=";
+	private static final String CKFINDER_UPLOAD_URL = "static/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=";
 	private static final String CKFINDER_PAGE = "/ckfinder.html";
 	private static final String DEFAULT_IMAGE_TYPE = "Images";
 	private static final String DEFAULT_FLASH_TYPE = "Flash";

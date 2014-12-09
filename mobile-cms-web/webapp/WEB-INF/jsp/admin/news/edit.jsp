@@ -2,9 +2,21 @@
 <%@include file="/WEB-INF/jsp/common/taglib.jsp" %>
 <html>
 <head>
+    <meta http-equiv="X-UA-Compatible"content="IE=9; IE=8; IE=7; IE=EDGE">
     <title></title>
     <link rel="stylesheet" href="${ctxRoot}/static/css/cms.css"/>
     <script src="${ctxRoot}/static/tinymce/tinymce.min.js"></script>
+    <script>
+        $(function () {
+
+            $("#cmd").click(
+                    function(){   $(this).hide();
+                    }
+            )
+
+        });
+
+    </script>
 </head>
 <body>
 <div class="page-header">
@@ -39,7 +51,7 @@
                 <input type="submit" id="submit" style="display: none"/>
 
                 <div class="col-md-offset-9 col-md-3">
-                    <a class="btn btn-primary submitbtn">
+                    <a class="btn btn-primary submitbtn" id="cmd">
                         <i class="icon-ok bigger-110"></i>保存
                     </a>
                     &nbsp;

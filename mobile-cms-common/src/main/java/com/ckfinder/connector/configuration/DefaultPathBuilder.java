@@ -11,43 +11,44 @@
  */
 package com.ckfinder.connector.configuration;
 
-import java.util.regex.Pattern;
-import javax.servlet.http.HttpServletRequest;
 import com.ckfinder.connector.ServletContextFactory;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.regex.Pattern;
 
 /**
  * Path builder that creates default values of baseDir and baseURL.
  */
 public class DefaultPathBuilder implements IBasePathBuilder {
 
-	/**
-	 * gets default value of baseDir (based on baseURL).
-	 *
-	 * @param request request
-	 * @return default baseDir value
-	 */
-	public String getBaseDir(final HttpServletRequest request) {
-		String newBaseUrl = getBaseUrl(request);
-		if (Pattern.matches(Constants.URL_REGEX, getBaseUrl(request))) {
-			newBaseUrl = newBaseUrl.substring(newBaseUrl.indexOf(
-					request.getContextPath()));
-		}
-		newBaseUrl = newBaseUrl.replace(request.getContextPath(), "");
+    /**
+     * gets default value of baseDir (based on baseURL).
+     *
+     * @param request request
+     * @return default baseDir value
+     */
+    public String getBaseDir(final HttpServletRequest request) {
+        String newBaseUrl = getBaseUrl(request);
+        if (Pattern.matches(Constants.URL_REGEX, getBaseUrl(request))) {
+            newBaseUrl = newBaseUrl.substring(newBaseUrl.indexOf(
+                    request.getContextPath()));
+        }
+        newBaseUrl = newBaseUrl.replace(request.getContextPath(), "");
 
-		try {
-			return ServletContextFactory.getServletContext().getRealPath(newBaseUrl);
-		} catch (Exception e) {
-			return newBaseUrl;
-		}
-	}
+        try {
+            return ServletContextFactory.getServletContext().getRealPath(newBaseUrl);
+        } catch (Exception e) {
+            return newBaseUrl;
+        }
+    }
 
-	/**
-	 * gets default value of baseURL.
-	 *
-	 * @param request request
-	 * @return default baseURL value
-	 */
-	public String getBaseUrl(final HttpServletRequest request) {
-		return request.getContextPath().concat(IConfiguration.DEFAULT_BASE_URL);
-	}
+    /**
+     * gets default value of baseURL.
+     *
+     * @param request request
+     * @return default baseURL value
+     */
+    public String getBaseUrl(final HttpServletRequest request) {
+        return request.getContextPath().concat(IConfiguration.DEFAULT_BASE_URL);
+    }
 }

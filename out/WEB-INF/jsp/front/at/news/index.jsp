@@ -2,6 +2,7 @@
 <%@include file="/WEB-INF/jsp/common/taglib.jsp" %>
 <html>
 <head>
+    <%--<meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=0.2, maximum-scale=2.0, user-scalable=yes"/>--%>
     <title></title>
     <script>
         function findpage(page) {
@@ -23,29 +24,32 @@
             location.href = "${ctxRoot}/front/at/news/findPage.do?page_number=" + page;
         }
     </script>
+
 </head>
 <body>
+<div style="padding-left: 20px;"><img src="${ctxRoot}/static/front/images/logo.png" width="300px"/> </div>
+<div><img src="${ctxRoot}/static/front/images/a.jpg" width="100%" height="200px" /></div>
 <div id="mytable"
      style="width: 100%;height: 100%;background: #ffffff;font-family: 'trebuchet MS', 'Lucida sans', Arial;font-size: 12px;color: #444;">
     <input type="hidden" id="page" value="${page_number}"/>
     <input type="hidden" id="end" value="${end}-1"/>
 
-    <h2 style="background:#6699cc;color:#ffffff;">新闻中心</h2>
-    <table style="width: 98%;margin: 0 auto;border:0px solid red;" cellspacing="2">
-        <c:forEach var="new" items="${news}">
-            <tr style="border-bottom: 1px dotted #000000;height: 25px;">
-                <td>&nbsp;&nbsp;&nbsp;<a href="${ctxRoot}/front/at/news/findByTbNewsId.do?id=${new.id}"
+    <h2 style="background:#6699cc;color:#ffffff;padding-top:10px;padding-bottom: 10px;padding-left: 5px;margin-bottom: 10px;">新闻中心</h2>
+    <table style="width: 100%;margin: 0 auto;border:0px solid red;" cellspacing="0">
+        <c:forEach var="new1" items="${news}">
+            <tr style="border-bottom: 1px dotted #000000;height: 35px;font-size: 15px;">
+                <td>&nbsp;<a href="${ctxRoot}/front/at/news/findByTbNewsId.do?id=${new1.id}"
                                          style="color: #444;">
                     <c:choose>
-                    <c:when test="${fn:length(new.title) > 10}">
-                        <c:out value="${fn:substring(new.title, 0, 16)}..."/>
+                    <c:when test="${fn:length(new1.title) > 10}">
+                        <c:out value="${fn:substring(new1.title, 0, 16)}..."/>
                     </c:when>
                     <c:otherwise>
-                        <c:out value="${new.title}"/>
+                        <c:out value="${new1.title}"/>
                     </c:otherwise>
                     </c:choose>
                 </td>
-                <td style="text-align: right;"><fmt:formatDate value="${new.operTime}"
+                <td style="text-align: right;"><fmt:formatDate value="${new1.operTime}"
                                                                type="date"/>&nbsp;&nbsp;&nbsp;</td>
             </tr>
         </c:forEach>

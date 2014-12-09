@@ -19,85 +19,85 @@ import java.util.regex.Pattern;
  */
 public class PathUtils {
 
-	/**
-	 * Escapes double slashes (//) and replace all backslashes (\) with slashes
-	 * (/). Additionally preserves UNC paths.
-	 *
-	 * @param string - string to escape.
-	 * @return escaped string.
-	 */
-	public static String escape(String string) {
-		if (string == null || string.equals("")) {
-			return string;
-		}
-		String prefix = "";
-		if (string.indexOf("://") != -1) {
-			prefix = string.substring(0, string.indexOf("://") + 3);
-			string = string.replaceFirst(prefix, "");
-		}
-		string = string.replaceAll("\\\\", "/");
+    /**
+     * Escapes double slashes (//) and replace all backslashes (\) with slashes
+     * (/). Additionally preserves UNC paths.
+     *
+     * @param string - string to escape.
+     * @return escaped string.
+     */
+    public static String escape(String string) {
+        if (string == null || string.equals("")) {
+            return string;
+        }
+        String prefix = "";
+        if (string.indexOf("://") != -1) {
+            prefix = string.substring(0, string.indexOf("://") + 3);
+            string = string.replaceFirst(prefix, "");
+        }
+        string = string.replaceAll("\\\\", "/");
 
-		// preserve // at the beginning for UNC paths
-		if (string.startsWith("//")) {
-			string = "/" + string.replaceAll("/+", "/");
-		} else {
-			string = string.replaceAll("/+", "/");
-		}
-		return prefix.concat(string);
-	}
+        // preserve // at the beginning for UNC paths
+        if (string.startsWith("//")) {
+            string = "/" + string.replaceAll("/+", "/");
+        } else {
+            string = string.replaceAll("/+", "/");
+        }
+        return prefix.concat(string);
+    }
 
-	/**
-	 * Adds slash at the end of String if it doesn't already start with slash
-	 *
-	 * @param string - input string.
-	 * @return String with slash at the end, null or empty String.
-	 */
-	public static String addSlashToEnd(String string) {
-		if (string != null && !string.equals("")
-				&& string.charAt(string.length() - 1) != '/') {
-			return string.concat("/");
-		}
-		return string;
-	}
+    /**
+     * Adds slash at the end of String if it doesn't already start with slash
+     *
+     * @param string - input string.
+     * @return String with slash at the end, null or empty String.
+     */
+    public static String addSlashToEnd(String string) {
+        if (string != null && !string.equals("")
+                && string.charAt(string.length() - 1) != '/') {
+            return string.concat("/");
+        }
+        return string;
+    }
 
-	/**
-	 * Adds slash at the beginning of String provided that String is not ULR
-	 *
-	 * @param string - input string.
-	 * @return String with slash at the beginning, null or empty String.
-	 */
-	public static String addSlashToBeginning(String string) {
-		if (string == null || string.charAt(0) == '/'
-				|| Pattern.matches(Constants.URL_REGEX, string)) {
-			return string;
-		}
-		return "/".concat(string);
-	}
+    /**
+     * Adds slash at the beginning of String provided that String is not ULR
+     *
+     * @param string - input string.
+     * @return String with slash at the beginning, null or empty String.
+     */
+    public static String addSlashToBeginning(String string) {
+        if (string == null || string.charAt(0) == '/'
+                || Pattern.matches(Constants.URL_REGEX, string)) {
+            return string;
+        }
+        return "/".concat(string);
+    }
 
-	/**
-	 * Removes slash from the beginning if necessary.
-	 *
-	 * @param string - input string.
-	 * @return String without slash at the beginning, null or empty String.
-	 */
-	public static String removeSlashFromBeginning(String string) {
-		if (string != null && !string.equals("") && string.charAt(0) == '/') {
-			return string.substring(1, string.length());
-		}
-		return string;
-	}
+    /**
+     * Removes slash from the beginning if necessary.
+     *
+     * @param string - input string.
+     * @return String without slash at the beginning, null or empty String.
+     */
+    public static String removeSlashFromBeginning(String string) {
+        if (string != null && !string.equals("") && string.charAt(0) == '/') {
+            return string.substring(1, string.length());
+        }
+        return string;
+    }
 
-	/**
-	 * Removes slash from the end if necessary.
-	 *
-	 * @param string - input string.
-	 * @return String without slash at the end, null or empty String.
-	 */
-	public static String removeSlashFromEnd(String string) {
-		if (string != null && !string.equals("")
-				&& string.charAt(string.length() - 1) == '/') {
-			return string.substring(0, string.length() - 1);
-		}
-		return string;
-	}
+    /**
+     * Removes slash from the end if necessary.
+     *
+     * @param string - input string.
+     * @return String without slash at the end, null or empty String.
+     */
+    public static String removeSlashFromEnd(String string) {
+        if (string != null && !string.equals("")
+                && string.charAt(string.length() - 1) == '/') {
+            return string.substring(0, string.length() - 1);
+        }
+        return string;
+    }
 }
