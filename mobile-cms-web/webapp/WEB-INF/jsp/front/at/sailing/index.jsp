@@ -211,10 +211,14 @@
     </div>
     <br>
     <div id="result">
+
     <c:if test="${not empty hint}">
         <div>未找到符合条件的记录</div>
     </c:if>
 
+    <c:if test="${not empty sailings}">
+        <div>*长江片区货物统一由上海中转</div>
+    </c:if>
 
     <c:forEach var="sailing" items="${sailings}">
         <ul>
