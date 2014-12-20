@@ -29,7 +29,8 @@
                 </form:form>
                 <div class="hr hr-15 dotted hr-double"></div>
 
-                <form action="${ctx}/user/delete.do" method="post">
+
+                <form action="${ctx}/user/delete.do" method="post" class="ajaxForm">
                     <a class="btn btn-primary" href="${ctx}/user/edit.do">
                         <i class="icon-plus icon-large"></i>新建
                     </a>

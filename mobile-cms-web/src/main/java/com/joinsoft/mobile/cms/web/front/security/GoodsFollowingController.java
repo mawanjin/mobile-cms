@@ -37,20 +37,20 @@ public class GoodsFollowingController extends AccessTokenController {
      */
     @RequestMapping("findGoods")
     public String findGoods(Model model, String yundan, String box) {
-        String json = followingService.findGoods(yundan, box);
-        if (null != json && !json.equals("[]")) {
-            JsonNode jsonNode = Json.parse(json);
-            List<JobCargotrackinginfo> infos = new ArrayList<JobCargotrackinginfo>();
-            for (int i = 0; i < jsonNode.size(); i++) {
-//            System.out.println(jsonNode.get(i).toString());
-                infos.add((JobCargotrackinginfo) Json.fromJson(jsonNode.get(i).toString(), JobCargotrackinginfo.class));
-            }
-            model.addAttribute("infos", infos);
-        } else {
-            model.addAttribute("hint", "该条件查询无记录");
-        }
-        model.addAttribute("yundan", yundan);
-        model.addAttribute("box", box);
+//        String json = followingService.findGoods(yundan, box);
+//        if (null != json && !json.equals("[]")) {
+//            JsonNode jsonNode = Json.parse(json);
+//            List<JobCargotrackinginfo> infos = new ArrayList<JobCargotrackinginfo>();
+//            for (int i = 0; i < jsonNode.size(); i++) {
+////            System.out.println(jsonNode.get(i).toString());
+//                infos.add((JobCargotrackinginfo) Json.fromJson(jsonNode.get(i).toString(), JobCargotrackinginfo.class));
+//            }
+//            model.addAttribute("infos", infos);
+//        } else {
+//            model.addAttribute("hint", "该条件查询无记录");
+//        }
+//        model.addAttribute("yundan", yundan);
+//        model.addAttribute("box", box);
         return FrontController.PORTAL_PREFIX + "/at/goods/index";
     }
 }
