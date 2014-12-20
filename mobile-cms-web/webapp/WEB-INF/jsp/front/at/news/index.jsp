@@ -40,14 +40,15 @@
             <tr style="border-bottom: 1px dotted #000000;height: 35px;font-size: 15px;">
                 <td>&nbsp;<a href="${ctxRoot}/front/at/news/findByTbNewsId.do?id=${new1.id}"
                                          style="color: #444;">
-                    <c:choose>
-                    <c:when test="${fn:length(new1.title) > 10}">
-                        <c:out value="${fn:substring(new1.title, 0, 16)}..."/>
-                    </c:when>
-                    <c:otherwise>
-                        <c:out value="${new1.title}"/>
-                    </c:otherwise>
-                    </c:choose>
+                        <c:out value="${new1.title}"/></a>
+                    <%--<c:choose>--%>
+                    <%--<c:when test="${fn:length(new1.title) > 10}">--%>
+                        <%--<c:out value="${fn:substring(new1.title, 0, 16)}..."/>--%>
+                    <%--</c:when>--%>
+                    <%--<c:otherwise>--%>
+                        <%--<c:out value="${new1.title}"/>--%>
+                    <%--</c:otherwise>--%>
+                    <%--</c:choose>--%>
                 </td>
                 <td style="text-align: right;"><fmt:formatDate value="${new1.operTime}"
                                                                type="date"/>&nbsp;&nbsp;&nbsp;</td>
