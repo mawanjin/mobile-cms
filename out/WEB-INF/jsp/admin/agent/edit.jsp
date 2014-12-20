@@ -11,10 +11,20 @@
         $(function () {
 
             $("#cmd").click(
-                function(){   $(this).hide();
+                function(){
+                    if($("#meForm").valid()){
+                        $(this).hide();
+                    }
                 }
             )
-
+/*
+            $("#meForm").validate({
+                submitHandler:function(form){
+                    alert("submitted");
+                    form.submit();
+                }
+            });
+*/
         });
 
     </script>
@@ -35,7 +45,9 @@
     <div class="col-xs-12">
         <%@include file="/WEB-INF/jsp/common/message.jsp" %>
         <form:form action="${ctx}/agent/save.do" method="post"
-                   class="form-horizontal validate_frm">
+                   class="form-horizontal validate_frm"
+                id="meForm"
+                >
             <form:hidden path="id"/>
 
             <div class="form-group">
@@ -51,6 +63,13 @@
                 <form:label path="agentName" class="col-sm-3 control-label no-padding-right">网点名称:</form:label>
                 <div class="col-sm-9">
                     <form:input class="col-sm-6 required" path="agentName" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <form:label path="agentName" class="col-sm-3 control-label no-padding-right">港口名称:</form:label>
+                <div class="col-sm-9">
+                    <form:input class="col-sm-6 required" path="port" />
                 </div>
             </div>
 

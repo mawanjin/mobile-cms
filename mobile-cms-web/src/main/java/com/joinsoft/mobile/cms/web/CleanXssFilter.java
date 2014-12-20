@@ -26,7 +26,7 @@ public class CleanXssFilter implements Filter {
                 return ;
             }
         }
-        httpReq.getSession().invalidate();
+       httpReq.getSession().invalidate();
         chain.doFilter(req, resp);
     }
 

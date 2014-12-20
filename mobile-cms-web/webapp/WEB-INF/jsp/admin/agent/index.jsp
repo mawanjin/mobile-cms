@@ -28,6 +28,7 @@
                            class="form-inline">
                     <input type="text" name="Q_LIKE_section.sectionName" value="${param.Q_LIKE_section.sectionName}" placeholder="片区名称">
                     <input type="text" name="Q_LIKE_agentName" value="${param.Q_LIKE_agentName}" placeholder="网点名称">
+                    <input type="text" name="Q_LIKE_port" value="${param.Q_LIKE_port}" placeholder="港口名称">
                     <a class="btn submitbtn">
                         <i class="icon-search"></i>&nbsp;&nbsp;查找
                     </a>
@@ -53,6 +54,7 @@
                                 </th>
                                 <th>片区</th>
                                 <th>网点名称</th>
+                                <th>港口名称</th>
                                 <th>负责人</th>
                                 <th>电话</th>
                                 <th>传真</th>
@@ -72,6 +74,7 @@
                                     </td>
                                     <td>${item.section.sectionName}</td>
                                     <td>${item.agentName}</td>
+                                    <td>${item.port}</td>
                                     <td>${item.header}</td>
                                     <td>${item.telephone}</td>
                                     <td>${item.fax}</td>

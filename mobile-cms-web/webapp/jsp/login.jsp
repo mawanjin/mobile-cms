@@ -55,6 +55,7 @@
                                         } else {
                                             Subject subject = SecurityUtils.getSubject();
                                             if (subject != null) {
+
                                                 String root = request.getContextPath();
                                                 if (subject.hasRole("admin")) {
                                                     response.sendRedirect(root + "/admin/index.do");

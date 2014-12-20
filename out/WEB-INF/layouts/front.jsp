@@ -11,12 +11,7 @@
     <title></title>
     <link rel="stylesheet" href="${ctxRoot}/static/front/css/style.css?r=<%=System.currentTimeMillis()%>">
     <script src='${ctxRoot}/static/framework/js/jquery-1.10.2.min.js'></script>
-    <script type="text/javascript" charset="utf-8"
-            src="${ctxRoot}/static/front/js_source/jquery.blockUI.js?r=<%=System.currentTimeMillis()%>"></script>
-    <script type="text/javascript" charset="utf-8"
-            src="${ctxRoot}/static/front/js_source/sign.js?r=<%=System.currentTimeMillis()%>"></script>
-    <script type="text/javascript" charset="utf-8"
-            src="${ctxRoot}/static/front/front_plugin.js?r=<%=System.currentTimeMillis()%>"></script>
+
     <sitemesh:head/>
 </head>
 <body>

@@ -33,11 +33,11 @@
                                     <div class="dd-handle">
                                         <i class="icon-angle-right bigger-100"></i> ${menu.name}
                                         <div class="pull-right action-buttons">
-                                            <a class="green"
+                                          <a class="green"
                                                href="${ctx}/menu/edit.do?parentId=${menu.id}">
                                                 <i class="icon-plus bigger-130"></i>
                                             </a>
-                                            <a class="blue" href="${ctx}/menu/edit.do?id=${menu.id}">
+                                              <a class="blue" href="${ctx}/menu/edit.do?id=${menu.id}">
                                                 <i class="icon-pencil bigger-130"></i>
                                             </a>
                                             <a class="red delete" href="${ctx}/menu/delete.do?id=${menu.id}">

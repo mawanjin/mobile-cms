@@ -31,7 +31,15 @@ X.hook = function () {
 };
 
 window.x_init_hook_util = function () {
-    $(".validate_frm").validate();
+    $(".validate_frm").validate(
+        {
+        submitHandler:function(form){
+        alert("submitted");
+        form.submit();
+    }
+        }
+
+    );
     $(".validateForm").validate();
 };
 
