@@ -76,28 +76,28 @@
             <div class="form-group">
                 <form:label path="header" class="col-sm-3 control-label no-padding-right">负责人:</form:label>
                 <div class="col-sm-9">
-                    <form:input class="col-sm-6 required" path="header" />
+                    <form:input class="col-sm-6 " path="header" />
                 </div>
             </div>
 
             <div class="form-group">
                 <form:label path="telephone" class="col-sm-3 control-label no-padding-right">电话:</form:label>
                 <div class="col-sm-9">
-                    <form:input class="col-sm-6 required" path="telephone" />
+                    <form:input class="col-sm-6 " path="telephone" />
                 </div>
             </div>
 
             <div class="form-group">
                 <form:label path="fax" class="col-sm-3 control-label no-padding-right">传真:</form:label>
                 <div class="col-sm-9">
-                    <form:input class="col-sm-6 required" path="fax" />
+                    <form:input class="col-sm-6 " path="fax" />
                 </div>
             </div>
 
             <div class="form-group">
                 <form:label path="addr" class="col-sm-3 control-label no-padding-right">网点地址:</form:label>
                 <div class="col-sm-9">
-                    <form:input class="col-sm-6 required" path="addr" />
+                    <form:input class="col-sm-6 " path="addr" />
                 </div>
             </div>
 
