@@ -51,7 +51,7 @@
         <caption></caption>
         <thead>
         <tr>
-            <th scope="col">部门</th>
+            <th scope="col" width="50px">部门</th>
             <th scope="col">负责人</th>
             <th scope="col">电话</th>
             <%--<th scope="col">传真</th>--%>
