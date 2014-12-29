@@ -33,6 +33,16 @@ public class TbAgent extends AutoModel {
     @Transient
     private Long sectionId;
 
+    private String port;
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
+    }
+
     public Long getSectionId() {
 
         if(section==null) {

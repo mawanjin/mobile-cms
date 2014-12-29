@@ -54,8 +54,8 @@
             <th scope="col" width="50px">部门</th>
             <th scope="col">负责人</th>
             <th scope="col">电话</th>
-            <%--<th scope="col">传真</th>--%>
-            <%--<th scope="col">邮编</th>--%>
+            <th scope="col">传真</th>
+            <th scope="col">邮编</th>
             <th scope="col">地址</th>
         </tr>
         </thead>
@@ -65,8 +65,8 @@
                 <td class="row">${agent.agentName}</td>
                 <td class="row">${agent.header}</td>
                 <td class="row">${agent.telephone}</td>
-                <%--<td class="row">${agent.fax}</td>--%>
-                <%--<td class="row">${agent.post}</td>--%>
+                <td class="row">${agent.fax}</td>
+                <td class="row">${agent.post}</td>
                 <td class="row">${agent.addr}</td>
             </tr>
         </c:forEach>
