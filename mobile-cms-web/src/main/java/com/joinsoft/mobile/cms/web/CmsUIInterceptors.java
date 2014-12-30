@@ -113,7 +113,9 @@ public class CmsUIInterceptors extends UIInterceptors {
             request.setAttribute("siderNavList", securityService.buildMenu(requestUri));
             request.setAttribute("backProgressList", notifyService.getReadyAndRunningTask());
             request.setAttribute("notificationsList", notifyService.getNotifyList());
-            request.setAttribute("loginUser", securityService.getLoginUser());
+            request.getSession().setAttribute("loginUser", securityService.getLoginUser());
+            //todo 插入数据库登录日志
+
         }
     }
 
