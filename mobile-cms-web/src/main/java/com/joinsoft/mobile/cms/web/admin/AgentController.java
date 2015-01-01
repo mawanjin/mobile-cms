@@ -16,6 +16,7 @@ import com.joinsoft.mobile.cms.service.AgentService;
 import com.joinsoft.mobile.cms.service.ConfigService;
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -53,7 +54,9 @@ public class AgentController extends AdminController {
     @RequestMapping("index")
     public void index(HttpServletRequest request, Model model) {
         Map<String, Object> searchParams = HttpRequests.getParametersStartingWith(request, "Q_");
-        Page<TbAgent> page = agentService.searchAgent(searchParams, buildPageRequest(request));
+
+        Page<TbAgent> page = agentService.searchAgent(searchParams, buildPageRequest(request,new Sort(Sort.Direction.ASC,"section.sectionName")));
+
         model.addAttribute("page", page);
     }
 
