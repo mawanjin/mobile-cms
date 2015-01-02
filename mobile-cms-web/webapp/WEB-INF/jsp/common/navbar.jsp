@@ -115,8 +115,10 @@
 
                     <li class="divider"></li>
 
+
                     <li>
-                        <a href="${ctxRoot}/logout">
+                        <%--<a href="${ctxRoot}/logout">--%>
+                        <a href="${ctxRoot}/admin/dologout.do">
                             <i class="icon-off"></i>
                             退出
                         </a>

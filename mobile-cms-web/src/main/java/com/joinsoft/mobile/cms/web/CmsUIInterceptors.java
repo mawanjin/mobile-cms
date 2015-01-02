@@ -5,11 +5,14 @@ import com.joinsoft.framework.security.entity.User;
 import com.joinsoft.framework.security.repository.UserRepository;
 import com.joinsoft.framework.web.UIInterceptors;
 import com.joinsoft.mobile.cms.component.Http;
+import com.joinsoft.mobile.cms.entity.TbLoginout;
+import com.joinsoft.mobile.cms.service.LoginoutService;
 import com.joinsoft.mobile.cms.service.mobile.MobileSecurityService;
 import com.joinsoft.mobile.cms.service.mobile.MobileService;
 import com.joinsoft.mobile.cms.web.front.security.AccessTokenController;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.slf4j.Logger;
@@ -20,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * xingsen@join-cn.com
@@ -37,6 +42,9 @@ public class CmsUIInterceptors extends UIInterceptors {
     private Http http;
     @Resource
     private UserRepository userRepository;
+
+    @Resource
+    private LoginoutService loginoutService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -109,12 +117,31 @@ public class CmsUIInterceptors extends UIInterceptors {
         String requestUri = request.getServletPath();
         if(securityService==null)return;
         User loginUser = securityService.getLoginUser();
+        if(request.getSession().getAttribute("loginUser")==null&&loginUser!=null){
+            loginSta(request,loginUser);
+        }
+
         if (loginUser != null) {
             request.setAttribute("siderNavList", securityService.buildMenu(requestUri));
             request.setAttribute("backProgressList", notifyService.getReadyAndRunningTask());
             request.setAttribute("notificationsList", notifyService.getNotifyList());
-            request.setAttribute("loginUser", securityService.getLoginUser());
+            request.getSession().setAttribute("loginUser", securityService.getLoginUser());
+
+
         }
+    }
+
+    void loginSta(HttpServletRequest request,User loginUser){
+        // 插入数据库登录日志
+        TbLoginout tbLoginout = new TbLoginout();
+        tbLoginout.setIp(request.getRemoteAddr());
+        tbLoginout.setLoginName(loginUser.getLoginName());
+        tbLoginout.setName(loginUser.getName());
+        Calendar calendar =  Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        tbLoginout.setLoginTime(sdf.format(calendar.getTime()));
+
+        loginoutService.save(tbLoginout);
     }
 
     protected boolean isLogin(HttpServletRequest request) {
